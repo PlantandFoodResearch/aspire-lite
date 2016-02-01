@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Aspire Lite</string>
+    <string name="PlantStageLabel">Plant stage:</string>
+    <string name="BrixReadingsLabel">Brix% readings:</string>
+    <string name="Plus">+</string>
+    <string name="Minus">-</string>
+    <string-array name="plant_stage_array">
+        <item>Dormancy (1)</item>
+        <item>Close-up</item>
+        <item>Fern established</item>
+        <item>Peak fern growth (1)</item>
+        <item>Peak fern growth (2)</item>
+        <item>Dormancy (2)</item>
+    </string-array>
+</resources>

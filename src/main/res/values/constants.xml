@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="MIN_BRIX_READINGS">5</integer>
+</resources>
