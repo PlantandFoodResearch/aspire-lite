@@ -24,9 +24,9 @@ public class EntryAdapter extends BaseAdapter {
         return entries.size();
     }
 
-    public EditText getItem(int position) {
+    public String getItem(int position) {
         /* Get the "item" at the corresponding position */
-        return entries.get(position);
+        return entries.get(position).getText().toString();
     }
 
     public long getItemId(int position) {
