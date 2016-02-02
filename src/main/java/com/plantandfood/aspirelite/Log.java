@@ -13,9 +13,9 @@ public class Log {
     Context context;
 
     public static final int DEBUG = 0;
-    public static final int MESSAGE = 0;
-    public static final int WARN = 0;
-    public static final int ERROR = 0;
+    public static final int MESSAGE = 1;
+    public static final int WARN = 2;
+    public static final int ERROR = 3;
 
     public Log(Context context, LinearLayout area) {
         /* Create a new logger */
