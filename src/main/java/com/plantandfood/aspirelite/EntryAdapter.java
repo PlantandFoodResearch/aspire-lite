@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.text.InputType;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -46,6 +47,10 @@ public class EntryAdapter extends BaseAdapter {
         brix.setRawInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
         /* Set the width of the element */
         brix.setWidth(80); /* TODO: Fix this to use a constant somewhere */
+        /* Force the element to be single line */
+        brix.setSingleLine(true);
+        /* Center the text */
+        brix.setGravity(Gravity.CENTER);
         /* Add the item */
         entries.add(brix);
 
