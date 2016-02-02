@@ -3,7 +3,6 @@ package com.plantandfood.aspirelite;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.support.v4.content.ContextCompat;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -30,7 +29,7 @@ public class Log {
     public void log(int level, CharSequence message) {
         /* Log a message */
         events.add(new Event(level, message));
-        android.util.Log.e("t", message.toString());
+        android.util.Log.e("Aspire Lite", message.toString());
         if (level == DEBUG) {
             /* Do nothing */
             return;
