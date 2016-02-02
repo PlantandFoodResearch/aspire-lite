@@ -1,3 +1,7 @@
+/* The ExpandedGrid class is a GridView that expands to fill it's contents.
+ * I found a hacky workaround on the net somewhere; eventually, this should be replaced.
+ */
+
 package com.plantandfood.aspirelite;
 
 import android.content.Context;
@@ -5,6 +9,7 @@ import android.util.AttributeSet;
 import android.widget.GridView;
 
 public class ExpandedGrid extends GridView {
+    /* Overridden expanded grid - a GridView that expands to fill it's contents */
 
     public ExpandedGrid(Context context) {
         super(context);

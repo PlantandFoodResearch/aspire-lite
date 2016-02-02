@@ -1,3 +1,8 @@
+/* Main "activity"
+ * Basically the landing stage for anyone opening the app...
+ * This includes most of the UI and calculation code.
+ */
+
 package com.plantandfood.aspirelite;
 
 import android.content.Context;

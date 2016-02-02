@@ -1,3 +1,8 @@
+/* An adaptor for the Brix% reading entry widgets!
+ * This basically maintains an ArrayList of EditTexts, which is hooked up to a GridView in the main
+ * activity.
+ */
+
 package com.plantandfood.aspirelite;
 
 import java.util.ArrayList;

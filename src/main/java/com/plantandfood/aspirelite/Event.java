@@ -1,3 +1,7 @@
+/* Wrapper class containing a level and a message, used internally in Log for holding
+ * level/message pairs.
+ */
+
 package com.plantandfood.aspirelite;
 
 class Event {

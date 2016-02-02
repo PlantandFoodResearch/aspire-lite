@@ -1,3 +1,7 @@
+/* Logging framework!
+ * This handles logging for the app, which includes the in-app messages.
+ */
+
 package com.plantandfood.aspirelite;
 
 import android.content.Context;
@@ -29,6 +33,7 @@ public class Log {
     public void log(int level, CharSequence message) {
         /* Log a message */
         events.add(new Event(level, message));
+        // Use Log.e to avoid the debug logs being lost in the maze of other log messages...
         android.util.Log.e("Aspire Lite", message.toString());
         if (level == DEBUG) {
             /* Do nothing */
