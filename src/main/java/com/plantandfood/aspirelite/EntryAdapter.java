@@ -70,7 +70,7 @@ public class EntryAdapter extends BaseAdapter {
 
             @Override
             public void afterTextChanged(Editable s) {
-                context.refresh();
+                context.updateEntries();
             }
         });
 

@@ -13,6 +13,7 @@ import android.widget.Spinner;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -122,10 +123,59 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         log.log(Log.DEBUG, "Spinner is deselected");
     }
 
+    public void updateEntries() {
+        /* Update entries, then refresh */
+        // TODO: Persist first?
+        refresh();
+    }
+
     public void refresh() {
         /* Recalculate... something has changed */
         log.clear();
         log.log(Log.DEBUG, "Refreshing...");
+        getResults();
+    }
+
+    public void getResults() {
+        /* Find the Brix% readings, sanitizing/updating as we go */
+        ArrayList<Float> results = new ArrayList<>();
+        boolean error = false;
+        for (int i = 0; i < entryAdapter.getCount(); i ++) {
+            /* Check that item */
+            String value = entryAdapter.getItem(i);
+            if (value.length() != 0) {
+                try {
+                    /* Add the value (if it converts and is valid) */
+                    Float brix = Float.parseFloat(value);
+                    if (brix < 0 || brix > 32) {
+                        /* Out of range! */
+                        error = true;
+                        log.log(Log.ERROR, "Invalid Brix% reading ('" + brix +
+                                "' should be between 0 and 32)!");
+                    } else {
+                        /* A valid result!
+                        * Clear any formatting and add the result.
+                        */
+                        results.add(brix);
+                    }
+                } catch (NumberFormatException e) {
+                    /* Not a number */
+                    error = true;
+                    log.log(Log.ERROR, "Invalid number '" + value + "'!");
+                }
+            }
+        }
+
+        /* Check the value count */
+        int min_entries = getResources().getInteger(R.integer.MIN_BRIX_READINGS);
+        if (min_entries > results.size()) {
+            /* Bail out, the count is too small */
+            log.log(Log.ERROR, "Insufficient Brix% readings entered (" + results.size() + "/" +
+                min_entries + ")!");
+            error = true;
+        }
+
+        // TODO: Do something with the error messages...
+        // TODO: Do something with the results...
     }
 }
-
