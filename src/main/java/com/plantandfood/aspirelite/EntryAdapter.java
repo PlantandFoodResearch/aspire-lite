@@ -2,8 +2,9 @@ package com.plantandfood.aspirelite;
 
 import java.util.ArrayList;
 
-import android.content.Context;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +12,10 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 
 public class EntryAdapter extends BaseAdapter {
-    private Context context;
+    private MainActivity context;
     private ArrayList<EditText> entries = new ArrayList<>();
 
-    public EntryAdapter(Context c) {
+    public EntryAdapter(MainActivity c) {
         context = c;
     }
 
@@ -51,6 +52,28 @@ public class EntryAdapter extends BaseAdapter {
         brix.setSingleLine(true);
         /* Center the text */
         brix.setGravity(Gravity.CENTER);
+
+        /* Add the watcher for this item
+        * This just calls MainActivity.refresh; within my limited knowledge of Java, this seems to
+        * be the best that I can do.
+        */
+        brix.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                context.refresh();
+            }
+        });
+
         /* Add the item */
         entries.add(brix);
 
