@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class EntryAdapter extends BaseAdapter {
     private MainActivity context;
@@ -39,7 +40,7 @@ public class EntryAdapter extends BaseAdapter {
         return entries.get(position);
     }
 
-    public void add() {
+    public void add(String value) {
         /* Add a new entry to the list */
 
         /* Create a new entry widget */
@@ -52,6 +53,11 @@ public class EntryAdapter extends BaseAdapter {
         brix.setSingleLine(true);
         /* Center the text */
         brix.setGravity(Gravity.CENTER);
+
+        /* Set the starting value, if one is given */
+        if (value != null) {
+            brix.setText(value, TextView.BufferType.EDITABLE);
+        }
 
         /* Add the watcher for this item
         * This just calls MainActivity.refresh; within my limited knowledge of Java, this seems to

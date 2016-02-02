@@ -1,7 +1,6 @@
 package com.plantandfood.aspirelite;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -53,13 +52,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         entryAdapter = new EntryAdapter(this);
         entryLayout.setAdapter(entryAdapter);
 
-        /* Create the initial text entry elements */
-        Resources res = getResources();
-        int brix_count = res.getInteger(R.integer.MIN_BRIX_READINGS);
-        for (int i = 0; i < brix_count; i++) {
-            addEntry(null);
-        }
-
         /* Initialise the spinner */
         Spinner spinner = (Spinner) findViewById(R.id.PlantStageSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -79,11 +71,43 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         } catch (Exception e) {
             log.log(Log.DEBUG, "Error loading plant stage; got " + e.toString());
         }
+        /* Load the brix% values */
+        try {
+            FileInputStream file = openFileInput("brix-readings");
+            int character;
+            StringBuilder current = new StringBuilder();
+            while ((character = file.read()) != -1) {
+                if (character == '\0') {
+                    /* Save the current string */
+                    entryAdapter.add(current.toString());
+                    log.log(Log.ERROR, "Loaded a brix% reading of " + current.toString());
+                    current = new StringBuilder();
+                } else {
+                    current.append((char) character);
+                }
+            }
+            file.close();
+        } catch (Exception e) {
+            log.log(Log.DEBUG, "Error loading brix% readings; got " + e.toString());
+        }
+        /* Add any missing required boxes */
+        int brix_count = getResources().getInteger(R.integer.MIN_BRIX_READINGS);
+        for (int i = entryAdapter.getCount(); i < brix_count; i++) {
+            entryAdapter.add(null);
+        }
+        updateBrixMinus();
     }
 
     public void addEntry(View view) {
         /* Add the button */
-        entryAdapter.add();
+        entryAdapter.add(null);
+        updateBrixMinus();
+        persistEntries();
+    }
+
+    public void updateBrixMinus() {
+        /* Update the state of the BrixMinus button */
+
         /* Re-enable the button if the count is high enough */
         if (entryAdapter.getCount() > getResources().getInteger(R.integer.MIN_BRIX_READINGS)) {
             findViewById(R.id.BrixMinus).setEnabled(true);
@@ -94,16 +118,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void rmEntry(View view) {
-        /* Find the minimum number of entries */
-        int brix_count = getResources().getInteger(R.integer.MIN_BRIX_READINGS);
         /* Remove an entry if there is enough */
-        if (entryAdapter.getCount() > brix_count) {
+        if (entryAdapter.getCount() > getResources().getInteger(R.integer.MIN_BRIX_READINGS)) {
             entryAdapter.rm();
         }
-        /* Disable the button if the count is now too low */
-        if (entryAdapter.getCount() <= brix_count) {
-            view.setEnabled(false);
-        }
+        updateBrixMinus();
+        persistEntries();
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -120,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             file.close();
             log.log(Log.DEBUG, "Saved the plant stage of " + spinnerValue);
         } catch (Exception e) {
-            log.log(Log.DEBUG, "File not found; got " + e.toString());
+            log.log(Log.WARN, "Error saving values; got " + e.toString());
         }
     }
 
@@ -131,8 +151,31 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     public void updateEntries() {
         /* Persist the entries, then refresh */
-        // TODO: Implement persistence...
+        persistEntries();
         refresh();
+    }
+
+    private void persistEntries() {
+        /* Persist the entries */
+        try {
+            FileOutputStream file = openFileOutput("brix-readings", Context.MODE_PRIVATE);
+            for (int i = 0; i < entryAdapter.getCount(); i ++) {
+                /* Persist this item */
+                String value = entryAdapter.getItem(i);
+                for (int c = 0; c < value.length(); c++) {
+                    int character = value.charAt(c);
+                    if (character != '\0') {
+                        /* We use \0 (a null byte) as a delimeter */
+                        file.write(character);
+                    }
+                }
+                file.write('\0');
+                log.log(Log.DEBUG, "Saved a Brix% reading of " + value);
+            }
+            file.close();
+        } catch (Exception e) {
+            log.log(Log.WARN, "Error saving values; got " + e.toString());
+        }
     }
 
     public void refresh() {
