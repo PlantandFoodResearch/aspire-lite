@@ -10,6 +10,9 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -103,6 +106,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             entryAdapter.add(null);
         }
         updateBrixMinus();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        /* Handle the menu creation event */
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return true;
+    }
+
+    public void help(MenuItem menu) {
+        /* Handle the help menu item being pressed */
+
+        log.log(Log.DEBUG, "The help menu is not yet implemented!");
     }
 
     public void addEntry(View view) {

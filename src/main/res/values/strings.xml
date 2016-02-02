@@ -5,6 +5,7 @@
     <string name="Plus">+</string>
     <string name="Minus">-</string>
     <string name="Reset">Reset</string>
+    <string name="Help">Help</string>
     <string-array name="plant_stage_array">
         <item>Dormancy (1)</item>
         <item>Close-up</item>
