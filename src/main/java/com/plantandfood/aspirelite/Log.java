@@ -27,9 +27,14 @@ public class Log {
     public void log(int level, CharSequence message) {
         /* Log a message */
         events.add(new Event(level, message));
+        android.util.Log.e("t", message.toString());
+        if (level == DEBUG) {
+            /* Do nothing */
+            return;
+        }
         TextView view = new TextView(context);
-        // TODO: Add other formatting.
         view.setText(message);
+        // TODO: Add other formatting.
         area.addView(view);
     }
 
