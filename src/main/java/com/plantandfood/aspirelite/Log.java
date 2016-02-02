@@ -1,6 +1,9 @@
 package com.plantandfood.aspirelite;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.support.v4.content.ContextCompat;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -34,7 +37,13 @@ public class Log {
         }
         TextView view = new TextView(context);
         view.setText(message);
-        // TODO: Add other formatting.
+        if (level == WARN) {
+            view.setTextColor(Color.parseColor("purple"));
+            view.setTypeface(Typeface.DEFAULT_BOLD);
+        } else if (level == ERROR) {
+            view.setTextColor(Color.parseColor("red"));
+            view.setTypeface(Typeface.DEFAULT_BOLD);
+        }
         area.addView(view);
     }
 
