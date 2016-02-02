@@ -128,7 +128,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             entryAdapter.rm();
         }
         updateBrixMinus();
-        persistEntries();
+        updateEntries();
+    }
+
+    public void resetResults(View view) {
+        /* Reset the results */
+        entryAdapter.reset(getResources().getInteger(R.integer.MIN_BRIX_READINGS));
+        updateBrixMinus();
+        updateEntries();
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

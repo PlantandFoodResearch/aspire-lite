@@ -4,6 +4,7 @@
     <string name="BrixReadingsLabel">Brix% readings:</string>
     <string name="Plus">+</string>
     <string name="Minus">-</string>
+    <string name="Reset">Reset</string>
     <string-array name="plant_stage_array">
         <item>Dormancy (1)</item>
         <item>Close-up</item>

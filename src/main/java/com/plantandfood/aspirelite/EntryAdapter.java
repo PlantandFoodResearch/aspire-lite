@@ -96,4 +96,13 @@ public class EntryAdapter extends BaseAdapter {
         entries.remove(entries.size() - 1);
         this.notifyDataSetChanged();
     }
+
+    public void reset(int count) {
+        /* Remove all of the existing entries, and repopulate with count fresh boxes */
+
+        entries.clear();
+        for (int i = 0; i < count; i ++) {
+            add(null);
+        }
+    }
 }
