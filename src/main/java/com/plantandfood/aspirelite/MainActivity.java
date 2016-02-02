@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Log log;
     /* Spinner position */
     int spinnerValue;
+    /* Current (valid) results */
+    ArrayList<Float> results;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,13 +68,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         } catch (Exception e) {
             log.log(Log.DEBUG, "Error loading plant stage; got " + e.toString());
         }
-    }
-
-    @Override
-    protected void onPause() {
-        /* Save the current state... this is always supposed to be called */
-
-        super.onPause();
     }
 
     public void addEntry(View view) {
@@ -124,8 +119,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void updateEntries() {
-        /* Update entries, then refresh */
-        // TODO: Persist first?
+        /* Persist the entries, then refresh */
+        // TODO: Implement persistence...
         refresh();
     }
 
@@ -133,12 +128,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         /* Recalculate... something has changed */
         log.clear();
         log.log(Log.DEBUG, "Refreshing...");
-        getResults();
+        updateResults();
     }
 
-    public void getResults() {
+    public boolean updateResults() {
         /* Find the Brix% readings, sanitizing/updating as we go */
-        ArrayList<Float> results = new ArrayList<>();
+
+        /* Run an initial check */
+        results = new ArrayList<>();
         boolean error = false;
         for (int i = 0; i < entryAdapter.getCount(); i ++) {
             /* Check that item */
@@ -175,7 +172,42 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             error = true;
         }
 
-        // TODO: Do something with the error messages...
-        // TODO: Do something with the results...
+        /* Check that the values are sane, and sanitize the results */
+        ArrayList<Float> sanitized = new ArrayList<>();
+        float stddev = stddevResult();
+        float mean = meanResult();
+        log.log(Log.ERROR, "Mean:" + mean + ", Stddev:" + stddev);
+        for (int i = 0; i < results.size(); i ++) {
+            if (results.get(i) < mean - (stddev * 2) ||
+                    results.get(i) > mean + (stddev * 2)) {
+                log.log(Log.ERROR, "Discarding out of range Brix% reading " + results.get(i));
+                error = true;
+            } else {
+                sanitized.add(results.get(i));
+            }
+        }
+        /* Save the sanitized results */
+        results = sanitized;
+
+        return error;
+    }
+
+    public float meanResult() {
+        /* Calculate the mean result */
+        float total = 0;
+        for (int i = 0; i < results.size(); i ++) {
+            total += results.get(i);
+        }
+        return total / results.size();
+    }
+
+    public float stddevResult() {
+        /* Find the standard deviation of the results */
+        float sum = 0;
+        float avg = meanResult();
+        for (int i = 0; i < results.size(); i ++) {
+            sum += Math.pow(avg - results.get(i), 2f);
+        }
+        return (float)Math.sqrt(sum / results.size());
     }
 }
