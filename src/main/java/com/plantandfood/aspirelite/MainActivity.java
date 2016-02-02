@@ -219,16 +219,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         error = true;
                         log.log(Log.ERROR, "Invalid Brix% reading ('" + brix +
                                 "' should be between 0 and 32)!");
+                        entryAdapter.markInvalid(i);
                     } else {
                         /* A valid result!
                         * Clear any formatting and add the result.
                         */
                         results.add(brix);
+                        entryAdapter.markValid(i);
                     }
                 } catch (NumberFormatException e) {
                     /* Not a number */
                     error = true;
                     log.log(Log.ERROR, "Invalid number '" + value + "'!");
+                    entryAdapter.markInvalid(i);
                 }
             }
         }
@@ -251,6 +254,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     results.get(i) > mean + (stddev * OUTLIER_RANGE)) {
                 log.log(Log.ERROR, "Discarding out of range Brix% reading " + results.get(i));
                 error = true;
+                entryAdapter.markInvalid(i);
             } else {
                 sanitized.add(results.get(i));
             }

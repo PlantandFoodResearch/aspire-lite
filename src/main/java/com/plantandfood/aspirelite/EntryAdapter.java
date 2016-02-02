@@ -7,6 +7,7 @@ package com.plantandfood.aspirelite;
 
 import java.util.ArrayList;
 
+import android.graphics.Color;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -104,5 +105,15 @@ public class EntryAdapter extends BaseAdapter {
         for (int i = 0; i < count; i ++) {
             add(null);
         }
+    }
+
+    public void markInvalid(int position) {
+        /* Mark the item at the given position as invalid */
+        ((EditText)this.getView(position, null, null)).setTextColor(Color.parseColor("red"));
+    }
+
+    public void markValid(int position) {
+        /* Mark the item at the given position as valid */
+        ((EditText)this.getView(position, null, null)).setTextColor(Color.parseColor("black"));
     }
 }
