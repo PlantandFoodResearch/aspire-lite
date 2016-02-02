@@ -6,6 +6,8 @@
 package com.plantandfood.aspirelite;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -132,10 +134,26 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void resetResults(View view) {
-        /* Reset the results */
-        entryAdapter.reset(getResources().getInteger(R.integer.MIN_BRIX_READINGS));
-        updateBrixMinus();
-        updateEntries();
+        /* Reset the results - the reset button has been pressed
+        * First, though, create a new dialog and check that the user *really* wants to reset all
+        * fields. Realistically, it might also be wise to add some other precautions.
+        */
+        new AlertDialog.Builder(this)
+                .setTitle("Reset all")
+                .setMessage("Are you sure that you want to reset all fields?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        /* Continue with the delete... */
+                        entryAdapter.reset(getResources().getInteger(R.integer.MIN_BRIX_READINGS));
+                        updateBrixMinus();
+                        updateEntries();
+                    }
+                }).setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        /* Do nothing; this is required so that there *is* a cancel button  */
+                    }
+                }).setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
