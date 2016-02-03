@@ -7,6 +7,7 @@
     <string name="Plus">+</string>
     <string name="Minus">-</string>
     <string name="Reset">Reset</string>
+    <string name="ResetAll">Reset all the entered Brix% readings?</string>
 
     <!-- Action strings -->
     <string name="Help">Help</string>

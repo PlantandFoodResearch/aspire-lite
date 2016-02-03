@@ -177,16 +177,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         * fields. Realistically, it might also be wise to add some other precautions.
         */
         new AlertDialog.Builder(this)
-                .setTitle("Reset all")
-                .setMessage("Are you sure that you want to reset all fields?")
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                .setTitle(getResources().getString(R.string.Reset))
+                .setMessage(getResources().getString(R.string.ResetAll))
+                .setPositiveButton(getResources().getString(R.string.Reset),
+                        new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         /* Continue with the delete... */
                         entryAdapter.reset(getResources().getInteger(R.integer.MIN_BRIX_READINGS));
                         updateBrixMinus();
                         updateEntries();
                     }
-                }).setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                }).setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         /* Do nothing; this is required so that there *is* a cancel button  */
                     }
