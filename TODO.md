@@ -39,7 +39,6 @@ Remaining TODO items for this Android app.
 - Message formatting/text sizes (visibility?)
 - Focus not moving as expected in the gridview
 - Gridview not positioning the entry boxes well
-- Scroll to focused
 - Scroll to newly added?
 - Focus on newly added?
 - Scroll to removed? Or remove focused?
@@ -50,6 +49,7 @@ Remaining TODO items for this Android app.
 - Custom keyboard
 - Keyboard not vanishing on "tap-off" - difficult to fix?
 - Rotating the screen retracts the keyboard (elements loose focus)
+
 
 ## Refactor
 

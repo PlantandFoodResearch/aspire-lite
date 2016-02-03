@@ -89,6 +89,15 @@ public class EntryAdapter extends BaseAdapter {
             }
         });
 
+        /* Add a handler so that the screens scrolls to this element once focused */
+        brix.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            public void onFocusChange(View view, boolean hasFocus) {
+                if (hasFocus) {
+                    context.scrollTo(view);
+                }
+            }
+        });
+
         /* Add the item */
         entries.add(brix);
 

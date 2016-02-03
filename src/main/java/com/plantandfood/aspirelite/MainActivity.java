@@ -8,6 +8,7 @@ package com.plantandfood.aspirelite;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -142,6 +143,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         /* Launch the new activity and return */
         startActivity(intent);
         return true;
+    }
+
+    public void scrollTo(final View view) {
+        /* Scroll to the given view */
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                findViewById(R.id.MainView).scrollTo(0, view.getBottom());
+            }
+        });
     }
 
     public void addEntry(View view) {
