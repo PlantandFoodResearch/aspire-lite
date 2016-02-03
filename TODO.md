@@ -20,15 +20,6 @@ Remaining TODO items for this Android app.
 
 ## UI
 
-- Message formatting/text sizes
-- Focus not moving as expected
-- Scroll to focused
-- Scroll to newly added
-- Focus on newly added?
-- Provide some feedback for scrolling down for messages
-- Keyboard not vanishing on "tap-off" - difficult to fix?
-- General Brix% entry box location/behaviour
-- Keep the screen on while entering data?
 - First-time start message
   - Add an introduction for the first time that the app starts?
   - (Or, most likely) print a introduction message for the empty/reset state
@@ -38,10 +29,27 @@ Remaining TODO items for this Android app.
 - Get Warrick to test on a tablet
 - Figure out how to use styles
 - Figure out how to set a palette
-- Fix CHO result formatting (reduce insane number of decimal places)
 - Animations? (Where would be appropriate?)
-- Custom keyboard
 - Fix the remaining hardcoded strings (log messages)
+- Fix CHO result formatting (reduce insane number of decimal places)
+- Keep the screen on while entering data?
+
+### UX or discoverability
+
+- Message formatting/text sizes (visibility?)
+- Focus not moving as expected in the gridview
+- Gridview not positioning the entry boxes well
+- Scroll to focused
+- Scroll to newly added?
+- Focus on newly added?
+- Scroll to removed? Or remove focused?
+- Provide some feedback for scrolling down for messages
+
+### Keyboard
+
+- Custom keyboard
+- Keyboard not vanishing on "tap-off" - difficult to fix?
+- Keyboard brings up funny screen for data entry in horizontal mode
 
 
 ## Refactor
