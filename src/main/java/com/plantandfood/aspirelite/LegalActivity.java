@@ -1,9 +1,8 @@
 package com.plantandfood.aspirelite;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class LegalActivity extends AppCompatActivity {
+public class LegalActivity extends ChildActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

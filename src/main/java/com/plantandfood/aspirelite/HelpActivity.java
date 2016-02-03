@@ -1,11 +1,10 @@
 package com.plantandfood.aspirelite;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
 import android.widget.TextView;
 
-public class HelpActivity extends AppCompatActivity {
+public class HelpActivity extends ChildActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
