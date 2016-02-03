@@ -23,4 +23,39 @@
         <item>Peak fern growth (2)</item>
         <item>Dormancy (2)</item>
     </string-array>
+
+    <!-- Help or documentation strings -->
+    <!-- TODO: Implement most of these... -->
+    <string name="HelpBlurb">
+        Unfortunately, the help is largely unimplemented :(
+    </string>
+    <string name="HelpPlantStageBlurb">
+        Asparagus plants tend to cycle through distinct stages in a season.
+        See the graph for more information.
+    </string>
+    <string name="HelpBrixReadingsBlurb">
+        Brix% readings can be generated.
+        See Wikipedia for more information?
+    </string>
+    <string name="Limitations">Limitations</string>
+    <string name="HelpLimitationsBlurb">
+        Limitations of the underlying model include:\n
+        &#8226; Not working in the tropics.\n
+        &#8226; Not working for young crops.\n
+        The app itself also has some limitations&#8230;
+    </string>
+    <string name="FeedbackBlurb">
+        Currently, there is no channel for feedback.
+    </string>
+    <string name="LegalBlurb">
+        There is no legal blurb! Oh no!
+    </string>
+    <string name="AboutBlurb">
+        Not much is known about this app.
+        Apart from the fact that it is called "Aspire Lite".
+
+        Possibly.
+
+        Anyway, hopefully this is filled in at some point.
+    </string>
 </resources>
