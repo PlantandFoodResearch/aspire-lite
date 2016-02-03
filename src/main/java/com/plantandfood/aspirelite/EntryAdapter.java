@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.view.inputmethod.EditorInfo;
 
 public class EntryAdapter extends BaseAdapter {
     private MainActivity context;
@@ -59,6 +60,8 @@ public class EntryAdapter extends BaseAdapter {
         brix.setSingleLine(true);
         /* Center the text */
         brix.setGravity(Gravity.CENTER);
+        /* Stop using the IME "extracted text" UI */
+        brix.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
 
         /* Set the starting value, if one is given */
         if (value != null) {

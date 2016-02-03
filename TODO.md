@@ -49,8 +49,7 @@ Remaining TODO items for this Android app.
 
 - Custom keyboard
 - Keyboard not vanishing on "tap-off" - difficult to fix?
-- Keyboard brings up funny screen for data entry in horizontal mode
-
+- Rotating the screen retracts the keyboard (elements loose focus)
 
 ## Refactor
 
