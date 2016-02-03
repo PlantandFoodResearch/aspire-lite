@@ -71,24 +71,28 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/BrixPlus"
-                        android:layout_alignParentTop="true"
                         android:layout_toRightOf="@+id/BrixReadingsLabel"
                         android:layout_toStartOf="@+id/BrixMinus"
                         android:layout_toLeftOf="@+id/BrixMinus"
+                        android:layout_centerVertical="true"
                         android:contentDescription="@string/Plus"
-                        android:src="@android:drawable/ic_input_add"
-                        android:onClick="addEntry" />
+                        android:minHeight="48dp"
+                        android:src="@drawable/ic_add_circle_outline_24dp"
+                        android:onClick="addEntry"
+                        style="?android:attr/borderlessButtonStyle"/>
 
                     <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/BrixMinus"
-                        android:layout_alignParentTop="true"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
                         android:contentDescription="@string/Minus"
-                        android:src="@android:drawable/ic_delete"
-                        android:onClick="rmEntry" />
+                        android:minHeight="48dp"
+                        android:src="@drawable/ic_remove_circle_outline_24dp"
+                        android:onClick="rmEntry"
+                        style="?android:attr/borderlessButtonStyle" />
 
                 </RelativeLayout>
 
@@ -118,13 +122,14 @@
     </ScrollView>
 
     <Button
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Reset"
         android:id="@+id/ResetButton"
         android:layout_gravity="center_horizontal"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:onClick="resetResults" />
+        android:onClick="resetResults"
+        android:drawableLeft="@drawable/ic_clear_24dp" />
 
 </RelativeLayout>

@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 
@@ -154,11 +155,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         /* Update the state of the BrixMinus button */
 
         /* Re-enable the button if the count is high enough */
+        ImageButton minus = (ImageButton) findViewById(R.id.BrixMinus);
         if (entryAdapter.getCount() > getResources().getInteger(R.integer.MIN_BRIX_READINGS)) {
-            findViewById(R.id.BrixMinus).setEnabled(true);
+            minus.setEnabled(true);
+            minus.setAlpha(1.0f);
         } else {
             /* Otherwise, ensure that the button is disabled... */
-            findViewById(R.id.BrixMinus).setEnabled(false);
+            minus.setAlpha(0.12f);
+            minus.setEnabled(false);
         }
     }
 
