@@ -29,20 +29,27 @@
     <string name="HelpBlurb">
         Unfortunately, the help is largely unimplemented :(
     </string>
+    <string name="PlantStage">Plant stage</string>
     <string name="HelpPlantStageBlurb">
         Asparagus plants tend to cycle through distinct stages in a season.
         See the graph for more information.
     </string>
+    <string name="BrixReadings">Brix% readings</string>
     <string name="HelpBrixReadingsBlurb">
         Brix% readings can be generated.
         See Wikipedia for more information?
     </string>
     <string name="Limitations">Limitations</string>
     <string name="HelpLimitationsBlurb">
-        Limitations of the underlying model include:\n
-        &#8226; Not working in the tropics.\n
-        &#8226; Not working for young crops.\n
-        The app itself also has some limitations&#8230;
+        Due to limitations of the underlying model, the generated information will not be valid
+        for:\n
+        &#8226; Crops in tropical regions\n
+        &#8226; Young crops\n
+        The app itself also does not make use of the region-specific models.\n\n
+        See
+        <a href="https://www.researchgate.net/profile/Sarah_Sinton/publication/253703294_Carbohydrates_and_Yield_Physiology_of_Asparagus_-_A_Global_Overview/links/5406201d0cf2bba34c1e3ed6.pdf">
+            the original paper
+        </a> for more information.
     </string>
     <string name="FeedbackBlurb">
         Currently, there is no channel for feedback.

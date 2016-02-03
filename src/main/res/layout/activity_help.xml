@@ -59,7 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/PlantStageLabel"
+                    android:text="@string/PlantStage"
                     android:id="@+id/textView6"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true" />
@@ -83,7 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/BrixReadingsLabel"
+                    android:text="@string/BrixReadings"
                     android:id="@+id/textView7"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true" />
@@ -116,7 +116,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="@string/HelpLimitationsBlurb"
-                    android:id="@+id/textView14"
+                    android:id="@+id/HelpLimitationsText"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/textView13" />
             </RelativeLayout>
