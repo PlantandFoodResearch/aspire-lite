@@ -39,10 +39,11 @@ Remaining TODO items for this Android app.
 - Message formatting/text sizes (visibility?)
 - Focus not moving as expected in the gridview
 - Gridview not positioning the entry boxes well
-- Scroll to newly added?
-- Focus on newly added?
 - Scroll to removed? Or remove focused?
 - Provide some feedback for scrolling down for messages
+- Scrolling back up after adding another entry widget is *awkward*.
+  - Move the add/remove buttons?
+  - Add/remove at the start of the list instead of the end?
 
 ### Keyboard
 

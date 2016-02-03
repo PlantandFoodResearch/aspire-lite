@@ -102,6 +102,9 @@ public class EntryAdapter extends BaseAdapter {
         entries.add(brix);
 
         this.notifyDataSetChanged();
+
+        /* Request the focus for the newly added element */
+        brix.requestFocus();
     }
 
     public void rm() {
