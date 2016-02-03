@@ -4,6 +4,6 @@
     tools:context=".MainActivity">
     <item android:id="@+id/help"
         android:title="@string/Help"
-        android:onClick="help">
+        android:onClick="launchHelp">
     </item>
 </menu>

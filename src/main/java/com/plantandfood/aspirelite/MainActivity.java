@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         return true;
     }
 
-    public void help(MenuItem menu) {
+    public void launchHelp(MenuItem menu) {
         /* Handle the help menu item being pressed */
 
         log.log(Log.DEBUG, "The help menu is not yet implemented!");
