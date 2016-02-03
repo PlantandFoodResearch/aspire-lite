@@ -50,12 +50,27 @@
     <string name="LegalBlurb">
         There is no legal blurb! Oh no!
     </string>
+    <!-- TODO: Get this checked, fix any mistakes, add attribution for the other people who also
+        helped, etc...
+        This is also not a legally binding disclaimer.
+    -->
+    <!-- Because we are formatting and using HTML tags, ensure that any tag starts are properly
+        escaped. This does look quite ugly, but it works... and seems to be the recommended
+        solution.
+    -->
     <string name="AboutBlurb">
-        Not much is known about this app.
-        Apart from the fact that it is called "Aspire Lite".
+        &lt;i>%1$s %2$s&lt;/i>
+        &lt;br />&lt;br />
 
-        Possibly.
+        See
+        &lt;a href="https://www.researchgate.net/profile/Sarah_Sinton/publication/253703294_Carbohydrates_and_Yield_Physiology_of_Asparagus_-_A_Global_Overview/links/5406201d0cf2bba34c1e3ed6.pdf">
+            the original paper
+        &lt;/a> for details on the science behind the app.
+        The comments for each situation were originally provided by Sarah Sinton.
+        Some of the algorithms used are based off the code from the old AspireNZ DSS, which is now
+        offline.
+        &lt;br />&lt;br />
 
-        Anyway, hopefully this is filled in at some point.
+        This app was written by Alastair Hughes; as such, any mistakes will be his.
     </string>
 </resources>

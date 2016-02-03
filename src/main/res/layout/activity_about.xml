@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/About"
-        android:id="@+id/textView5"
+        android:id="@+id/AboutLabel"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -22,7 +22,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/AboutBlurb"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/textView5"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/AboutText"
+        android:layout_below="@+id/AboutIcon"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/AboutIcon"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/ic_launcher"
+        android:layout_below="@+id/AboutLabel" />
 </RelativeLayout>
