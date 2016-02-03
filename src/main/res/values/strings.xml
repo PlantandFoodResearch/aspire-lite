@@ -1,11 +1,20 @@
 <resources>
     <string name="app_name">Aspire Lite</string>
+
+    <!-- Button strings -->
     <string name="PlantStageLabel">Plant stage:</string>
     <string name="BrixReadingsLabel">Brix% readings:</string>
     <string name="Plus">+</string>
     <string name="Minus">-</string>
     <string name="Reset">Reset</string>
+
+    <!-- Action strings -->
     <string name="Help">Help</string>
+    <string name="Feedback">Feedback</string>
+    <string name="Legal">Legal</string>
+    <string name="About">About</string>
+
+    <!-- Plant stage strings -->
     <string-array name="plant_stage_array">
         <item>Dormancy (1)</item>
         <item>Close-up</item>

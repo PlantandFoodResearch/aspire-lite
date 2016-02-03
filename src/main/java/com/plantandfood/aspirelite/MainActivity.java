@@ -117,12 +117,30 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         return true;
     }
 
-    public void launchHelp(MenuItem menu) {
-        /* Handle the help menu item being pressed */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        /* Handle menu item selection */
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.help:
+                intent = new Intent(this, HelpActivity.class);
+                break;
+            case R.id.feedback:
+                intent = new Intent(this, FeedbackActivity.class);
+                break;
+            case R.id.legal:
+                intent = new Intent(this, LegalActivity.class);
+                break;
+            case R.id.about:
+                intent = new Intent(this, AboutActivity.class);
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
 
-        log.log(Log.DEBUG, "The help menu is not yet implemented!");
-        Intent intent = new Intent(this, HelpActivity.class);
+        /* Launch the new activity and return */
         startActivity(intent);
+        return true;
     }
 
     public void addEntry(View view) {
