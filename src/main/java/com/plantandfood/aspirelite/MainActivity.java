@@ -7,6 +7,7 @@ package com.plantandfood.aspirelite;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -120,6 +121,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         /* Handle the help menu item being pressed */
 
         log.log(Log.DEBUG, "The help menu is not yet implemented!");
+        Intent intent = new Intent(this, HelpActivity.class);
+        startActivity(intent);
     }
 
     public void addEntry(View view) {
