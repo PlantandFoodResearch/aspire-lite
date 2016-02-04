@@ -12,6 +12,7 @@ Remaining TODO items for this Android app.
 - Ensure that the magic numbers are documented
 - Get the help reviewed
 - Ensure that the remaining documentation is online
+- Finish RELEASING.md
 
 
 ## GridView
