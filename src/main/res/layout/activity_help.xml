@@ -46,6 +46,7 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="@string/HelpBlurb"
                     android:id="@+id/textView11"
+                    android:layout_centerHorizontal="true"
                     android:layout_below="@+id/textView" />
             </RelativeLayout>
 
