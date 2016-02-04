@@ -39,6 +39,7 @@ The GridView needs replacing:
 - Fix CHO result formatting (reduce insane number of decimal places)
 - Keep the screen on while entering data?
 - "Discarding" message confusing
+- Log messages may end up being displayed to the user
 
 ### UX or discoverability
 
@@ -65,6 +66,7 @@ The GridView needs replacing:
 - Filenames should be constants
 - Use sp instead of dp where appropriate
 - MainActivity.updateResults marks the wrong thing invalid (see the inline TODO)
+- Simplify the logging code to reduce getResources() usage
 
 
 ## Other
