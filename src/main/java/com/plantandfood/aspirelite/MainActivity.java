@@ -158,21 +158,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 * fields. Realistically, it might also be wise to add some other precautions.
                 */
                 new AlertDialog.Builder(this)
-                        .setTitle(getResources().getString(R.string.Reset))
-                        .setMessage(getResources().getString(R.string.ResetAll))
-                        .setPositiveButton(getResources().getString(R.string.Reset),
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        /* Continue with the delete... */
-                                        entryAdapter.reset(getResources().getInteger(R.integer.MIN_BRIX_READINGS));
-                                        updateEntries();
-                                    }
-                                }).setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        /* Do nothing; this is required so that there *is* a cancel button  */
-                                    }
-                }).setIcon(android.R.drawable.ic_dialog_alert)
-                        .show();
+                    .setTitle(getResources().getString(R.string.Reset))
+                    .setMessage(getResources().getString(R.string.ResetAll))
+                    .setPositiveButton(getResources().getString(R.string.Reset),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                /* Continue with the delete... */
+                                entryAdapter.reset(getResources().getInteger(R.integer.MIN_BRIX_READINGS));
+                                updateEntries();
+                            }
+                    }).setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            /* Do nothing; this is required so that there *is* a cancel button  */
+                        }
+                    }).setIcon(android.R.drawable.ic_dialog_alert).show();
                 break;
         }
     }
