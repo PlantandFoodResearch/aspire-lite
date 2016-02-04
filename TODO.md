@@ -44,8 +44,6 @@ The GridView needs replacing:
 
 - Message formatting/text sizes (visibility?)
 - Provide some feedback for scrolling down for messages
-- Don't display errors for out of range values *until* we have enough values to
-  show something sensible...
 - Scroll to the text once we have something to show?
 - Underline entry boxes is not very clear; maybe pre-populate the first box?
 
@@ -65,7 +63,8 @@ The GridView needs replacing:
 - Add more comments and fix/update existing
 - Split out the persistence/resume code?
 - Filenames should be constants
-- Use sp instead of dp where appropriate 
+- Use sp instead of dp where appropriate
+- MainActivity.updateResults marks the wrong thing invalid (see the inline TODO)
 
 
 ## Other

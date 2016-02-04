@@ -187,7 +187,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        /* Record the value */
+        /* Handle the spinner being selected - save the value, refresh the display */
         spinnerValue = position;
         /* Refresh the display */
         refresh();
@@ -293,22 +293,28 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             error = true;
         }
 
-        /* Check that the values are sane, and sanitize the results */
-        ArrayList<Float> sanitized = new ArrayList<>();
-        float stddev = stddevResult();
-        float mean = meanResult();
-        for (int i = 0; i < results.size(); i ++) {
-            if (results.get(i) < mean - (stddev * OUTLIER_RANGE) ||
-                    results.get(i) > mean + (stddev * OUTLIER_RANGE)) {
-                log.log(Log.ERROR, "Discarding out of range Brix% reading " + results.get(i));
-                error = true;
-                entryAdapter.markInvalid(i);
-            } else {
-                sanitized.add(results.get(i));
+        /* If we have not yet encountered an error, check that the values are sane, and sanitize
+         * the results. This prevents an error showing for possibly valid results while the values
+         * are still being entered.
+         */
+        if (!error) {
+            ArrayList<Float> sanitized = new ArrayList<>();
+            float stddev = stddevResult();
+            float mean = meanResult();
+            for (int i = 0; i < results.size(); i++) {
+                if (results.get(i) < mean - (stddev * OUTLIER_RANGE) ||
+                        results.get(i) > mean + (stddev * OUTLIER_RANGE)) {
+                    log.log(Log.ERROR, "Discarding out of range Brix% reading " + results.get(i));
+                    error = true;
+                    /* TODO: This is buggy (will not work if there is an enpty entry) */
+                    entryAdapter.markInvalid(i);
+                } else {
+                    sanitized.add(results.get(i));
+                }
             }
+            /* Save the sanitized results */
+            results = sanitized;
         }
-        /* Save the sanitized results */
-        results = sanitized;
 
         return error;
     }
