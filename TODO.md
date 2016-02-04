@@ -12,6 +12,7 @@ Remaining TODO items for this Android app.
 - Add on Github
 - Ensure that the magic numbers are documented
 
+
 ## Help/menu system
 
 - Actually write some help
@@ -74,7 +75,6 @@ The GridView needs replacing:
 - Add documentation for the magic numbers/other decisions
   - 20 is apparently the minimum (Ruth Butler was the statistician?)
 - PFR Aspire webpage link?
-- Based on PFR science
 - Add feedback links
   - Github issues?
   - Old Aspire email?

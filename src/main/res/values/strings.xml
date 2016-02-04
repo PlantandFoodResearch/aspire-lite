@@ -89,6 +89,7 @@
         Currently, there is no channel for feedback.
     </string>
     <string name="LegalBlurb">
+        <!-- TODO: This needs to be fixed before a release... -->
         There is no legal blurb! Oh no!
     </string>
     <!-- TODO: Get this checked, fix any mistakes, add attribution for the other people who also
