@@ -33,17 +33,22 @@ Remaining TODO items for this Android app.
 - Fix the remaining hardcoded strings (log messages)
 - Fix CHO result formatting (reduce insane number of decimal places)
 - Keep the screen on while entering data?
+- "Discarding" message confusing
 
 ### UX or discoverability
 
 - Message formatting/text sizes (visibility?)
 - Focus not moving as expected in the gridview
 - Gridview not positioning the entry boxes well
-- Scroll to removed? Or remove focused?
+- Scroll to removed?
 - Provide some feedback for scrolling down for messages
-- Scrolling back up after adding another entry widget is *awkward*.
-  - Move the add/remove buttons?
-  - Add/remove at the start of the list instead of the end?
+- Move the add button to the end of the list
+- Remove the minus button (use the reset button instead)
+- Don't display errors for out of range values *until* we have enough values to
+  show something sensible...
+- Scroll to the text once we have something to show?
+- Move the cancel in the reset dialog box
+- Underline entry boxes is not very clear; maybe pre-populate the first box?
 
 ### Keyboard
 
