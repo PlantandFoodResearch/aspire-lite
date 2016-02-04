@@ -23,9 +23,6 @@ Remaining TODO items for this Android app.
 - First-time start message
   - Add an introduction for the first time that the app starts?
   - (Or, most likely) print a introduction message for the empty/reset state
-- Review usability for the "flat" button styles
-- Look at other ways to fix the reset button
-  - Hide during data entry?
 - Get Warrick to test on a tablet
 - Figure out how to use styles
 - Figure out how to set a palette
