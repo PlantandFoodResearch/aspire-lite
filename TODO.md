@@ -84,3 +84,4 @@ Remaining TODO items for this Android app.
   - Old Aspire email?
 - Add support for importing/exporting data (from a clipboard? another app?)
 - Region-specific models
+- Link to the Github repo (upstream and in the feedback)
