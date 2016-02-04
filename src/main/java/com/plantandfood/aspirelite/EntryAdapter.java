@@ -42,10 +42,8 @@ public class EntryAdapter extends BaseAdapter {
         /* Set the dimensions in dp */
         int size = ((Float)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                 48, context.getResources().getDisplayMetrics())).intValue();
-        plusButton.setMinimumHeight(size);
-        plusButton.setMaxHeight(size);
-        plusButton.setMinimumWidth(size);
-        plusButton.setMaxWidth(size);
+        /* Make the button transparent */
+        plusButton.setBackgroundColor(Color.TRANSPARENT);
     }
 
     public int getCount() {

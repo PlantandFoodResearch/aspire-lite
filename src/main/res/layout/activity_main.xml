@@ -51,37 +51,39 @@
             </RelativeLayout>
 
             <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="72dp"
-                    android:id="@+id/BrixReadingsLayout"
-                android:nestedScrollingEnabled="false">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearance"
-                        android:text="@string/BrixReadingsLabel"
-                        android:id="@+id/BrixReadingsLabel"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true" />
-
-            </RelativeLayout>
-
-            <com.plantandfood.aspirelite.ExpandedGrid
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/BrixEntryLayout"
-                android:useDefaultMargins="false"
-                android:gravity="center"
-                android:stretchMode="columnWidth"
-                android:columnWidth="60dp"
-                android:verticalSpacing="10dp"
-                android:horizontalSpacing="10dp"
-                android:numColumns="auto_fit"
-                android:minHeight="100dp">
-            </com.plantandfood.aspirelite.ExpandedGrid>
+                android:id="@+id/BrixReadingsLayout"
+                android:nestedScrollingEnabled="false"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearance"
+                    android:text="@string/BrixReadingsLabel"
+                    android:id="@+id/BrixReadingsLabel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true" />
+
+                <com.plantandfood.aspirelite.ExpandedGrid
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/BrixReadingsLabel"
+                    android:orientation="horizontal"
+                    android:id="@+id/BrixEntryLayout"
+                    android:useDefaultMargins="false"
+                    android:gravity="center"
+                    android:stretchMode="columnWidth"
+                    android:columnWidth="60dp"
+                    android:verticalSpacing="2dp"
+                    android:horizontalSpacing="10dp"
+                    android:numColumns="auto_fit">
+                </com.plantandfood.aspirelite.ExpandedGrid>
+
+            </RelativeLayout>
 
             <LinearLayout
                 android:orientation="vertical"

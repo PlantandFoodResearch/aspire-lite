@@ -42,8 +42,6 @@ Remaining TODO items for this Android app.
 - Gridview not positioning the entry boxes well
 - Scroll to removed?
 - Provide some feedback for scrolling down for messages
-- Move the add button to the end of the list
-- Remove the minus button (use the reset button instead)
 - Don't display errors for out of range values *until* we have enough values to
   show something sensible...
 - Scroll to the text once we have something to show?
