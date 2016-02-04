@@ -19,7 +19,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 
@@ -27,7 +26,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener,
+        View.OnClickListener {
 
     /* Class-local EntryAdapter instance */
     EntryAdapter entryAdapter;
@@ -105,10 +105,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
         /* Add any missing required boxes */
         int brix_count = getResources().getInteger(R.integer.MIN_BRIX_READINGS);
-        for (int i = entryAdapter.getCount(); i < brix_count; i++) {
+        for (int i = entryAdapter.size(); i < brix_count; i++) {
             entryAdapter.add(null);
         }
-        updateBrixMinus();
     }
 
     @Override
@@ -145,6 +144,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         return true;
     }
 
+    public void onClick(View view) {
+        /* Handle a click */
+        if (view.getId() == R.id.BrixPlus) {
+            entryAdapter.add(null);
+            persistEntries();
+        }
+    }
+
     public void scrollTo(final View view) {
         /* Scroll to the given view */
         new Handler().post(new Runnable() {
@@ -153,37 +160,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 findViewById(R.id.MainView).scrollTo(0, view.getBottom());
             }
         });
-    }
-
-    public void addEntry(View view) {
-        /* Add the button */
-        entryAdapter.add(null);
-        updateBrixMinus();
-        persistEntries();
-    }
-
-    public void updateBrixMinus() {
-        /* Update the state of the BrixMinus button */
-
-        /* Re-enable the button if the count is high enough */
-        ImageButton minus = (ImageButton) findViewById(R.id.BrixMinus);
-        if (entryAdapter.getCount() > getResources().getInteger(R.integer.MIN_BRIX_READINGS)) {
-            minus.setEnabled(true);
-            minus.setAlpha(1.0f);
-        } else {
-            /* Otherwise, ensure that the button is disabled... */
-            minus.setAlpha(0.12f);
-            minus.setEnabled(false);
-        }
-    }
-
-    public void rmEntry(View view) {
-        /* Remove an entry if there is enough */
-        if (entryAdapter.getCount() > getResources().getInteger(R.integer.MIN_BRIX_READINGS)) {
-            entryAdapter.rm();
-        }
-        updateBrixMinus();
-        updateEntries();
     }
 
     public void resetResults(View view) {
@@ -199,7 +175,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     public void onClick(DialogInterface dialog, int which) {
                         /* Continue with the delete... */
                         entryAdapter.reset(getResources().getInteger(R.integer.MIN_BRIX_READINGS));
-                        updateBrixMinus();
                         updateEntries();
                     }
                 }).setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
@@ -243,7 +218,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         /* Persist the entries */
         try {
             FileOutputStream file = openFileOutput("brix-readings", Context.MODE_PRIVATE);
-            for (int i = 0; i < entryAdapter.getCount(); i ++) {
+            for (int i = 0; i < entryAdapter.size(); i ++) {
                 /* Persist this item */
                 String value = entryAdapter.getItem(i);
                 for (int c = 0; c < value.length(); c++) {
@@ -279,7 +254,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         /* Run an initial check */
         results = new ArrayList<>();
         boolean error = false;
-        for (int i = 0; i < entryAdapter.getCount(); i ++) {
+        for (int i = 0; i < entryAdapter.size(); i ++) {
             /* Check that item */
             String value = entryAdapter.getItem(i);
             if (value.length() != 0) {

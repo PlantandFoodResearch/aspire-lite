@@ -66,34 +66,7 @@
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true" />
 
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/BrixPlus"
-                        android:layout_toRightOf="@+id/BrixReadingsLabel"
-                        android:layout_toStartOf="@+id/BrixMinus"
-                        android:layout_toLeftOf="@+id/BrixMinus"
-                        android:layout_centerVertical="true"
-                        android:contentDescription="@string/Plus"
-                        android:minHeight="48dp"
-                        android:src="@drawable/ic_add_circle_outline_24dp"
-                        android:onClick="addEntry"
-                        style="?android:attr/borderlessButtonStyle"/>
-
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/BrixMinus"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:contentDescription="@string/Minus"
-                        android:minHeight="48dp"
-                        android:src="@drawable/ic_remove_circle_outline_24dp"
-                        android:onClick="rmEntry"
-                        style="?android:attr/borderlessButtonStyle" />
-
-                </RelativeLayout>
+            </RelativeLayout>
 
             <com.plantandfood.aspirelite.ExpandedGrid
                 android:layout_width="match_parent"

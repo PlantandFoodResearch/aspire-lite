@@ -11,39 +11,74 @@ import android.graphics.Color;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.view.inputmethod.EditorInfo;
 
 public class EntryAdapter extends BaseAdapter {
     private MainActivity context;
     private ArrayList<EditText> entries = new ArrayList<>();
+    private ImageButton plusButton;
 
     public EntryAdapter(MainActivity c) {
+        /* Save the context */
         context = c;
+
+        /* Create the plus button */
+        plusButton = new ImageButton(context);
+        /* Add the listener, and set the id */
+        plusButton.setOnClickListener(context);
+        plusButton.setId(R.id.BrixPlus);
+        /* Define a content description */
+        plusButton.setContentDescription(context.getResources().getString(R.string.Plus));
+        /* Set the background image */
+        plusButton.setImageResource(R.drawable.ic_add_circle_outline_24dp);
+        /* Set the dimensions in dp */
+        int size = ((Float)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                48, context.getResources().getDisplayMetrics())).intValue();
+        plusButton.setMinimumHeight(size);
+        plusButton.setMaxHeight(size);
+        plusButton.setMinimumWidth(size);
+        plusButton.setMaxWidth(size);
     }
 
     public int getCount() {
-        /* Return the number of elements */
+        /* Return the number of elements, plus one for the plus button... */
+        return entries.size() + 1;
+    }
+
+    public int size() {
+        /* Return the number of EditTexts */
         return entries.size();
     }
 
     public String getItem(int position) {
         /* Get the "item" at the corresponding position */
+        if (position == entries.size()) {
+            return "";
+        }
         return entries.get(position).getText().toString();
     }
 
     public long getItemId(int position) {
         /* I'm not completely clear on what this actually does... */
+        if (position == entries.size()) {
+            return plusButton.getId();
+        }
         return entries.get(position).getId();
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        /* Create an EditText */
+        /* Return the view at the given position */
+        if (position == entries.size()) {
+            return plusButton;
+        }
         return entries.get(position);
     }
 
@@ -105,12 +140,6 @@ public class EntryAdapter extends BaseAdapter {
 
         /* Request the focus for the newly added element */
         brix.requestFocus();
-    }
-
-    public void rm() {
-        /* Remove an existing entry */
-        entries.remove(entries.size() - 1);
-        this.notifyDataSetChanged();
     }
 
     public void reset(int count) {
