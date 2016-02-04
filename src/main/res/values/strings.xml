@@ -17,12 +17,12 @@
 
     <!-- Plant stage strings -->
     <string-array name="plant_stage_array">
-        <item>Dormancy (1)</item>
-        <item>Close-up</item>
-        <item>Fern established</item>
-        <item>Peak fern growth (1)</item>
-        <item>Peak fern growth (2)</item>
-        <item>Dormancy (2)</item>
+        <item>Pre-harvest</item>
+        <item>Harvest period</item>
+        <item>Fern establishing</item>
+        <item>Mid summer fern growth</item>
+        <item>Late summer fern growth</item>
+        <item>Dormancy</item>
     </string-array>
 
     <!-- Error/warning message strings for the Brix% readings analysis -->
@@ -38,17 +38,40 @@
     <!-- Help or documentation strings -->
     <!-- TODO: Implement most of these... -->
     <string name="HelpBlurb">
-        Unfortunately, the help is largely unimplemented :(
+        Topics:\n
+        &#8226; Plant stage definitions\n
+        &#8226; Taking Brix% readings\n
+        &#8226; App and model limitations\n
     </string>
     <string name="PlantStage">Plant stage</string>
     <string name="HelpPlantStageBlurb">
-        Asparagus plants tend to cycle through distinct stages in a season.
-        See the graph for more information.
+        The plant stage is used to correlate the CHO reading to the crop state.\n\n
+
+        <b>Pre-harvest:</b>\n
+        During late winter, before spear growth starts.\n
+
+        <b>Harvest period:</b>\n
+        Any time during spear harvest.\n
+
+        <b>Fern establishing:</b>\n
+        During the period after the end of harvest when the fern canopy is establishing.\n
+
+        <b>Mid summer fern growth:</b>\n
+        During the period of maximum fern activity, after it is fully established.\n
+
+        <b>Late summer fern growth:</b>\n
+        During the period when fern activity is starting to decline.\n
+
+        <b>Dormancy:</b>\n
+        At the end of fall, when ferns have died.
     </string>
     <string name="BrixReadings">Brix% readings</string>
     <string name="HelpBrixReadingsBlurb">
-        Brix% readings can be generated.
-        See Wikipedia for more information?
+        Unfortunately, there is no documentation online describing how to collect the Brix%
+        samples.\n\n
+        As collecting the samples is both involved and vital to the accuracy of the result,
+        you should only use this system if you have had prior experience an Aspire system.
+        Hopefully this situation will change in the near future.
     </string>
     <string name="Limitations">Limitations</string>
     <string name="HelpLimitationsBlurb">
