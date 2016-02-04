@@ -27,8 +27,8 @@
 
     <!-- Error/warning message strings for the Brix% readings analysis -->
     <string name="BrixErrorNotANumber">"Invalid number '%1$s'!"</string>
-    <string name="BrixErrorOutOfRange">"Invalid Brix%% reading (%1$.0f is not between %2$d and %3$d!)"</string>
-    <string name="BrixErrorTooVariable">"Outlier detected (%1$s)"</string>
+    <string name="BrixErrorOutOfRange">"Invalid Brix%% reading (%1$.0f is not between %2$d and %3$d)!"</string>
+    <string name="BrixErrorTooVariable">"Outlier detected (%1$s)!"</string>
     <string name="BrixErrorInsufficientValues">"Insufficient Brix%% readings entered (%1$d/%2$d)!"</string>
     <string name="BrixErrorOutOfRangeCHO">"Out of bounds CHO reading!"</string>
     <string name="BrixErrorUnknownStage">"Unknown plant stage '%1$s'!"</string>
@@ -36,7 +36,9 @@
     <string name="BrixCHO">"Estimated CHO: %1$.0f"</string>
 
     <!-- Help or documentation strings -->
-    <!-- TODO: Implement most of these... -->
+    <string name="Introduction">
+        Please enter the Brix% readings
+    </string>
     <string name="HelpBlurb">
         Topics:\n
         &#8226; Plant stage definitions\n

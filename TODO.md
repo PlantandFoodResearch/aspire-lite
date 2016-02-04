@@ -26,7 +26,7 @@ The GridView needs replacing:
 
 ## UI
 
-- Print a introduction message for the empty/reset state
+- Change the introduction method to be something more sane
 - Get Warrick to test on a tablet
 - Figure out how to use styles
 - Figure out how to set a palette
@@ -57,7 +57,7 @@ The GridView needs replacing:
 - Split out the persistence/resume code?
 - Filenames should be constants
 - Use sp instead of dp where appropriate
-- MainActivity.updateResults marks the wrong thing invalid (see the inline TODO)
+- MainActivity.updateResults marks the wrong thing as invalid (see the inline TODO)
 - Simplify the logging code to reduce getResources() usage
 - Fix the TODO's in the code...
 

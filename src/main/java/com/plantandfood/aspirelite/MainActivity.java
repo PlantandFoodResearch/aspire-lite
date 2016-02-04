@@ -252,7 +252,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public boolean updateResults() {
         /* Find the Brix% readings, sanitizing/updating as we go */
 
-        /* Run an initial check */
+        /* Gather the initial dataset */
         results = new ArrayList<>();
         boolean error = false;
         for (int i = 0; i < entryAdapter.size(); i ++) {
@@ -282,6 +282,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     entryAdapter.markInvalid(i);
                 }
             }
+        }
+
+        /* Check if there were no values.
+         * If so, print a different message and return, to avoid "frightening" first time users
+         * with a bold red error...
+         * TODO: Is this really valuable? Perhaps just change the "Insufficient readings" text to
+         *       be a "MESSAGE"?
+         */
+        if (!error && (results.size() == 0)) {
+            log.log(Log.MESSAGE, getResources().getString(R.string.Introduction));
+            return true;
         }
 
         /* Check the value count */
