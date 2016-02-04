@@ -25,6 +25,16 @@
         <item>Dormancy (2)</item>
     </string-array>
 
+    <!-- Error/warning message strings for the Brix% readings analysis -->
+    <string name="BrixErrorNotANumber">"Invalid number '%1$s'!"</string>
+    <string name="BrixErrorOutOfRange">"Invalid Brix%% reading (%1$s is not between %2$d and %3$d!)"</string>
+    <string name="BrixErrorTooVariable">"Outlier detected (%1$s)"</string>
+    <string name="BrixErrorInsufficientValues">"Insufficient Brix%% readings entered (%1$s /%2$s)!"</string>
+    <string name="BrixErrorOutOfRangeCHO"></string>
+    <string name="BrixErrorUnknownStage"></string>
+    <string name="BrixErrorUnknownCategory"></string>
+    <string name="BrixCHO"></string>
+
     <!-- Help or documentation strings -->
     <!-- TODO: Implement most of these... -->
     <string name="HelpBlurb">

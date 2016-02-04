@@ -265,8 +265,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     if (brix < 0 || brix > 32) {
                         /* Out of range! */
                         error = true;
-                        log.log(Log.ERROR, "Invalid Brix% reading ('" + brix +
-                                "' should be between 0 and 32)!");
+                        log.log(Log.ERROR, getResources().getString(R.string.BrixErrorOutOfRange,
+                                brix, 0, 32));
                         entryAdapter.markInvalid(i);
                     } else {
                         /* A valid result!
@@ -278,7 +278,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 } catch (NumberFormatException e) {
                     /* Not a number */
                     error = true;
-                    log.log(Log.ERROR, "Invalid number '" + value + "'!");
+                    log.log(Log.ERROR, getResources().getString(R.string.BrixErrorNotANumber, value));
                     entryAdapter.markInvalid(i);
                 }
             }
@@ -288,8 +288,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         int min_entries = getResources().getInteger(R.integer.MIN_BRIX_READINGS);
         if (min_entries > results.size()) {
             /* Bail out, the count is too small */
-            log.log(Log.ERROR, "Insufficient Brix% readings entered (" + results.size() + "/" +
-                min_entries + ")!");
+            log.log(Log.ERROR, getResources().getString(R.string.BrixErrorInsufficientValues,
+                    results.size(), min_entries));
             error = true;
         }
 
@@ -304,9 +304,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             for (int i = 0; i < results.size(); i++) {
                 if (results.get(i) < mean - (stddev * OUTLIER_RANGE) ||
                         results.get(i) > mean + (stddev * OUTLIER_RANGE)) {
-                    log.log(Log.ERROR, "Discarding out of range Brix% reading " + results.get(i));
+                    log.log(Log.ERROR, getResources().getString(R.string.BrixErrorTooVariable, results.get(i)));
                     error = true;
-                    /* TODO: This is buggy (will not work if there is an enpty entry) */
+                    /* TODO: This is buggy (will not work if there is an empty entry) */
                     entryAdapter.markInvalid(i);
                 } else {
                     sanitized.add(results.get(i));
