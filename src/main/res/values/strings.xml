@@ -86,7 +86,9 @@
         </a> for more information.
     </string>
     <string name="FeedbackBlurb">
-        Currently, there is no channel for feedback.
+        If you want to submit some kind of feedback, feel free to
+        <a href="https://github.com/PlantandFoodResearch/aspire-lite/issues/new">raise an issue</a>
+        on <a href="https://github.com/PlantandFoodResearch/aspire-lite">Github</a>.
     </string>
     <string name="LegalBlurb">
         <!-- TODO: This needs to be fixed before a release... -->
@@ -111,6 +113,10 @@
         The comments for each situation were originally provided by Sarah Sinton.
         Some of the algorithms used are based off the code from the old AspireNZ DSS, which is now
         offline.
+        &lt;br />&lt;br />
+
+        The app itself is open source, and is hosted on
+        <a href="https://github.com/PlantandFoodResearch/aspire-lite">Github</a>.
         &lt;br />&lt;br />
 
         This app was written by Alastair Hughes; as such, any mistakes will be his.

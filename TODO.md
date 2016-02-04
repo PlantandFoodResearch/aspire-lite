@@ -9,14 +9,9 @@ Remaining TODO items for this Android app.
 - Add the legal disclaimer, and get any text reviewed
 - Add a proper icon/branding
 - Finish the README
-- Add on Github
 - Ensure that the magic numbers are documented
-
-
-## Help/menu system
-
-- Actually write some help
 - Get the help reviewed
+- Ensure that the remaining documentation is online
 
 
 ## GridView
@@ -27,6 +22,7 @@ The GridView needs replacing:
 - Animating new items appearing/reset would be nice
 - The entry boxes are not positioned well (centering?)
 - The focus rules are wonky
+
 
 ## UI
 
@@ -75,10 +71,7 @@ The GridView needs replacing:
 - Add documentation for the magic numbers/other decisions
   - 20 is apparently the minimum (Ruth Butler was the statistician?)
 - PFR Aspire webpage link?
-- Add feedback links
-  - Github issues?
-  - Old Aspire email?
+- Add an email to the feedback page?
 - Add support for importing/exporting data (from a clipboard? another app?)
 - Region-specific models
-- Link to the Github repo (upstream and in the feedback)
 - Fix any non-coding TODO's

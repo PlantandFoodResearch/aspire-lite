@@ -12,11 +12,12 @@ public class AboutActivity extends ChildActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
-        /* Set the link method, and format the help text */
+        /* Format the text, and set the link method */
         TextView aboutText = (TextView) findViewById(R.id.AboutText);
         aboutText.setMovementMethod(LinkMovementMethod.getInstance());
-        String text = String.format(getResources().getString(R.string.AboutBlurb),
-                getResources().getString(R.string.app_name), BuildConfig.VERSION_NAME);
-        aboutText.setText(Html.fromHtml(text));
+        aboutText.setText(Html.fromHtml(
+                getResources().getString(R.string.AboutBlurb,
+                    getResources().getString(R.string.app_name),
+                    BuildConfig.VERSION_NAME)));
     }
 }
