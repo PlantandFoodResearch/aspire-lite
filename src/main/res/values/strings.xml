@@ -33,7 +33,7 @@
     <string name="BrixErrorOutOfRangeCHO">"Out of bounds CHO reading!"</string>
     <string name="BrixErrorUnknownStage">"Unknown plant stage '%1$s'!"</string>
     <string name="BrixErrorUnknownCategory">"Unknown age category '%1$s'!"</string>
-    <string name="BrixCHO">"Estimated CHO: %1$.0f</string>
+    <string name="BrixCHO">"Estimated CHO: %1$.0f"</string>
 
     <!-- Help or documentation strings -->
     <!-- TODO: Implement most of these... -->
@@ -92,82 +92,82 @@
         This app was written by Alastair Hughes; as such, any mistakes will be his.
     </string>
 
-    <string name="comment-d1-0">
+    <string name="comment_d1_0">
         "Root CHO content is very low for this stage of the annual growth cycle, probably due to inadequate replenishment of root reserves during the previous fern growth season.  This could have resulted from poor fern establishment, additional flushes during fern growth or premature fern loss or needle drop. These may have been caused by too much water, a foliar disease such as Stemphylium or physical damage such as that caused by wind or hail.  If a spear harvest is attempted, yield will probably be very low and subsequent fern growth will be poor.  No spear harvest will allow a long fern growth period and, therefore, plenty of opportunity for root recovery for the following season."
     </string>
-    <string name="comment-d1-150">
+    <string name="comment_d1_150">
         "Root CHO content is low for this stage of the annual growth cycle, probably due to inadequate replenishment of root reserves during the previous fern growth season.  This could have resulted from poor fern establishment, additional flushes during fern growth or premature fern loss or needle drop.  These may have been caused by too much water, a foliar disease such as Stemphylium or physical damage such as that caused by wind or hail.  Spear yield will probably be low.  A short harvest would allow a longer fern growth period and, therefore, more opportunity for root recovery after close-up."
     </string>
-    <string name="comment-d1-250">
+    <string name="comment_d1_250">
         "Root CHO content is below normal for this stage of the annual growth cycle, probably due to inadequate replenishment of root reserves during the previous fern growth season. This could have resulted from poor fern establishment, additional flushes during fern growth or premature fern loss or needle drop. These may have been caused by too much water, a foliar disease such as Stemphylium or physical damage such as that caused by wind or hail.  Spear yield will probably be lower than normal."
     </string>
-    <string name="comment-d1-350">
+    <string name="comment_d1_350">
         "Root CHO content is below normal for this stage of the annual growth cycle, probably due to inadequate replenishment of root reserves during the previous fern growth season. This could have resulted from poor fern establishment, additional flushes during fern growth or premature fern loss or needle drop. These may have been caused by too much water, a foliar disease such as Stemphylium or physical damage such as that caused by wind or hail.  Spear yield will probably be lower than normal."
     </string>
-    <string name="comment-d1-450">
+    <string name="comment_d1_450">
         "The root system is full of CHO, as it should be at this stage of the annual growth cycle.  This is due to full replenishment of root CHO reserves during the previous fern growth season.  As a result, CHO availability will not restrict spear yield, and subsequent fern growth should be good."
     </string>
-    <string name="comment-cu-0">
+    <string name="comment_cu_0">
         "Root CHO content is very low for this stage of the annual growth cycle. This could be because the harvest was too long, but it is more likely a consequence of inadequate replenishment of root reserves during the previous fern growth season. The latter could have resulted from poor fern establishment, additional flushes during fern growth or premature fern loss or needle drop.  These may have been caused by too much water, a foliar disease such as Stemphylium or physical damage such as that caused by wind or hail.  Low CHO availability will restrict initial growth of the ferns after close-up."
     </string>
-    <string name="comment-cu-150">
+    <string name="comment_cu_150">
         "Root CHO content is lower than normal for this stage of the annual growth cycle.  This could be because the harvest was too long, but it is more likely a consequence of inadequate replenishment of root reserves during the previous season.  The latter could have resulted from poor fern establishment, additional flushes during fern growth or premature fern loss or needle drop.  These may have been caused by too much water, a foliar disease such as Stemphylium or physical damage such as that caused by wind or hail.  Low CHO availability may restrict initial growth of the ferns after close-up."
     </string>
-    <string name="comment-cu-250">
+    <string name="comment_cu_250">
         "Root CHO content is about normal for this stage of the annual growth cycle.  Root reserves must have been replenished fully during the previous fern growth season, and have not been depleted too much during harvest.  At the higher end of the range, spear harvest could be continued without harming the crop.  CHO availability is unlikely to restrict fern establishment after close-up."
     </string>
-    <string name="comment-cu-350">
+    <string name="comment_cu_350">
         "Root CHO content is above normal for this stage of the annual growth cycle.  Root reserves must have been replenished fully during the previous fern growth season, and have not been depleted during harvest.  Spear harvest could be continued without harming the crop.  CHO availability will not restrict fern establishment after close-up."
     </string>
-    <string name="comment-fe-0">
+    <string name="comment_fe_0">
         "Root CHO content is lower than normal for this stage of the annual growth cycle. This is likely to be associated with either excessive or poor fern establishment.  Excessive initial fern growth, which could result from too much water or fertiliser application, would cause a large CHO depletion.  Poor establishment would result from a root CHO content that was already low at close-up.  This could be because the harvest was too long, but it is more likely a consequence of inadequate replenishment of root reserves during the previous season."
     </string>
-    <string name="comment-fe-200">
+    <string name="comment_fe_200">
         "Root CHO content is about normal for this stage of the annual growth cycle.  Root reserves must have been replenished fully during the previous fern growth season, and have not been depleted too much during harvest or initial fern growth."
     </string>
-    <string name="comment-fe-300">
+    <string name="comment_fe_300">
         "Root CHO content is higher than normal for this stage of the annual growth cycle.  This condition is unusual because fern establishment is a heavy drain on root reserves, and much of the available CHO left after spear harvest is usually utilised during this phase. The high level suggests that spear harvest was too short, and could have been extended without harming the crop.  Alternatively, it could result from poor fern growth during establishment."
     </string>
-    <string name="comment-fe-400">
+    <string name="comment_fe_400">
         "Root CHO content is much higher than normal for this stage of the annual growth cycle. This condition is very unusual because fern establishment is a heavy drain on root reserves, and much of the available CHO left after spear harvest is usually utilised during this phase.  The high level suggests that spear harvest was too short, and could have been extended substantially without harming the crop.  Alternatively, it could result from poor fern growth during establishment."
     </string>
-    <string name="comment-pfg1-0">
+    <string name="comment_pfg1_0">
         "Root CHO content is lower than normal for this stage of the crops annual growth cycle.  It should be recharging rapidly due to the activity of the established fern. The low value could result from poor fern establishment, fern still in the establishment phase, a recent new flush of fern growth or premature fern loss or needle drop.  The latter could be caused by a foliar disease such as Stemphylium or physical damage such as that caused by wind or hail."
     </string>
-    <string name="comment-pfg1-300">
+    <string name="comment_pfg1_300">
         "Root CHO content is not yet fully recharged.  It is about normal for this stage of the crops annual growth cycle, and should be increasing rapidly due to the activity of the established fern."
     </string>
-    <string name="comment-pfg1-400">
+    <string name="comment_pfg1_400">
         "Root CHO content is higher than normal for this stage of the crops annual growth cycle.  It is almost fully recharged, but should still be increasing due to the activity of the established fern."
     </string>
-    <string name="comment-pfg1-500">
+    <string name="comment_pfg1_500">
         "Root CHO content is fully recharged. This has occurred earlier than usual, perhaps because the CHO content was not fully depleted earlier in the season."
     </string>
-    <string name="comment-pfg2-0">
+    <string name="comment_pfg2_0">
         "Root CHO content is much lower than normal for this stage of the crops annual growth cycle.  The CHO content should be almost fully recharged by this stage.  The low value could result from poor fern establishment, a recent new flush of fern growth or premature fern loss or needle drop.  The latter could be caused by a foliar disease such as Stemphylium or physical damage such as that caused by wind or hail."
     </string>
-    <string name="comment-pfg2-300">
+    <string name="comment_pfg2_300">
         "Root CHO content is lower than normal for this stage of the crops annual growth cycle.  The CHO content should be almost fully recharged by this stage. The low value could result from poor fern establishment, a recent new flush of fern growth or premature fern loss or needle drop.  The latter could be caused by a foliar disease such as Stemphylium or physical damage such as that caused by wind or hail."
     </string>
-    <string name="comment-pfg2-400">
+    <string name="comment_pfg2_400">
         "Root CHO content is about normal for this stage of the crops annual growth cycle.  It is almost fully recharged, but should still be increasing due to the activity of the established fern."
     </string>
-    <string name="comment-pfg2-500">
+    <string name="comment_pfg2_500">
         "Root CHO content is fully recharged. This has occurred slightly earlier than usual, perhaps because the CHO content was not fully depleted earlier in the season, but ensures that the crop is well set up for good performance next season."
     </string>
-    <string name="comment-d2-0">
+    <string name="comment_d2_0">
         "Root CHO content is very low for this stage of the crops annual growth cycle due to inadequate replenishment of root reserves during fern growth.  This could have resulted from poor fern establishment, additional flushes during fern growth or premature fern loss or needle drop.  These may have been caused by too much water, a foliar disease such as Stemphylium or physical damage such as that caused by wind or hail.  Next season, spear yield will probably be very low if the crop is harvested and subsequent fern growth will be poor."
     </string>
-    <string name="comment-d2-150">
+    <string name="comment_d2_150">
         "Root CHO content is low for this stage of the crops annual growth cycle due to inadequate replenishment of root reserves during fern growth.  This could have resulted from poor fern establishment, additional flushes during fern growth or premature fern loss or needle drop.  These may have been caused by too much water, a foliar disease such as Stemphylium or physical damage such as that caused by wind or hail.  Next season, spear yield will probably be low if the crop is harvested and subsequent fern growth will be poor."
     </string>
-    <string name="comment-d2-250">
+    <string name="comment_d2_250">
         "Root CHO content is below normal for this stage of the crops annual growth cycle due to inadequate replenishment of root reserves during fern growth.  This could have resulted from poor fern establishment, additional flushes during fern growth or premature fern loss or needle drop.  These may have been caused by too much water, a foliar disease such as Stemphylium or physical damage such as that caused by wind or hail.  Next season, spear yield will probably be lower than normal if the crop is harvested and subsequent fern growth will be poor."
     </string>
-    <string name="comment-d2-350">
+    <string name="comment_d2_350">
         "The root system CHO content is good but not as high as it could be at this stage of the crops annual growth cycle due to incomplete replenishment of root reserves during fern growth.  This could have resulted from additional flushes during fern growth or premature fern loss or needle drop.  These may have been caused by too much water, a foliar disease such as Stemphylium or physical damage such as that caused by wind or hail.  Next season, spear yield could be reduced below optimum, especially if weather conditions are unfavourable for spear growth during harvest."
     </string>
-    <string name="comment-d2-450">
+    <string name="comment_d2_450">
         "The root system is full of CHO, as it should be at this stage of the crops annual growth cycle.  The high CHO content is the result of good fern growth and replenishment of root CHO reserves during the season. This ensures that the crop is well set up for good performance next season. CHO availability will not restrict spear yield and subsequent fern growth."
     </string>
 </resources>
