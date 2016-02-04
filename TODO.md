@@ -18,6 +18,15 @@ Remaining TODO items for this Android app.
 - Get the help reviewed
 
 
+## GridView
+
+The GridView needs replacing:
+
+- It currently causes some crash due to a combination of a keyboard/scrolling/button
+- Animating new items appearing/reset would be nice
+- The entry boxes are not positioned well (centering?)
+- The focus rules are wonky
+
 ## UI
 
 - First-time start message
@@ -26,7 +35,6 @@ Remaining TODO items for this Android app.
 - Get Warrick to test on a tablet
 - Figure out how to use styles
 - Figure out how to set a palette
-- Animations? (Where would be appropriate?)
 - Fix the remaining hardcoded strings (log messages)
 - Fix CHO result formatting (reduce insane number of decimal places)
 - Keep the screen on while entering data?
@@ -35,8 +43,6 @@ Remaining TODO items for this Android app.
 ### UX or discoverability
 
 - Message formatting/text sizes (visibility?)
-- Focus not moving as expected in the gridview
-- Gridview not positioning the entry boxes well
 - Provide some feedback for scrolling down for messages
 - Don't display errors for out of range values *until* we have enough values to
   show something sensible...
