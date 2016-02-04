@@ -146,9 +146,32 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     public void onClick(View view) {
         /* Handle a click */
-        if (view.getId() == R.id.BrixPlus) {
-            entryAdapter.add(null);
-            persistEntries();
+        switch (view.getId()) {
+            case R.id.BrixPlus:
+                /* Add the entries */
+                entryAdapter.add(null);
+                persistEntries();
+            case R.id.ResetButton:
+                /* Reset the results - the reset button has been pressed
+                * First, though, create a new dialog and check that the user *really* wants to reset all
+                * fields. Realistically, it might also be wise to add some other precautions.
+                */
+                new AlertDialog.Builder(this)
+                        .setTitle(getResources().getString(R.string.Reset))
+                        .setMessage(getResources().getString(R.string.ResetAll))
+                        .setPositiveButton(getResources().getString(R.string.Reset),
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        /* Continue with the delete... */
+                                        entryAdapter.reset(getResources().getInteger(R.integer.MIN_BRIX_READINGS));
+                                        updateEntries();
+                                    }
+                                }).setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        /* Do nothing; this is required so that there *is* a cancel button  */
+                                    }
+                }).setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
         }
     }
 
@@ -160,29 +183,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 findViewById(R.id.MainView).scrollTo(0, view.getBottom());
             }
         });
-    }
-
-    public void resetResults(View view) {
-        /* Reset the results - the reset button has been pressed
-        * First, though, create a new dialog and check that the user *really* wants to reset all
-        * fields. Realistically, it might also be wise to add some other precautions.
-        */
-        new AlertDialog.Builder(this)
-                .setTitle(getResources().getString(R.string.Reset))
-                .setMessage(getResources().getString(R.string.ResetAll))
-                .setPositiveButton(getResources().getString(R.string.Reset),
-                        new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        /* Continue with the delete... */
-                        entryAdapter.reset(getResources().getInteger(R.integer.MIN_BRIX_READINGS));
-                        updateEntries();
-                    }
-                }).setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        /* Do nothing; this is required so that there *is* a cancel button  */
-                    }
-                }).setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

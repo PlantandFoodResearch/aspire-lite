@@ -99,7 +99,6 @@
                 android:text="@string/Reset"
                 android:id="@+id/ResetButton"
                 android:layout_gravity="center_horizontal"
-                android:onClick="resetResults"
                 android:drawableStart="@drawable/ic_clear_24dp"
                 android:drawableLeft="@drawable/ic_clear_24dp"/>
         </LinearLayout>
