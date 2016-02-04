@@ -29,9 +29,7 @@ The GridView needs replacing:
 
 ## UI
 
-- First-time start message
-  - Add an introduction for the first time that the app starts?
-  - (Or, most likely) print a introduction message for the empty/reset state
+- Print a introduction message for the empty/reset state
 - Get Warrick to test on a tablet
 - Figure out how to use styles
 - Figure out how to set a palette
@@ -83,3 +81,4 @@ The GridView needs replacing:
 - Add support for importing/exporting data (from a clipboard? another app?)
 - Region-specific models
 - Link to the Github repo (upstream and in the feedback)
+- Fix any non-coding TODO's
