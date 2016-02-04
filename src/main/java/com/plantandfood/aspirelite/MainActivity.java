@@ -151,6 +151,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 /* Add the entries */
                 entryAdapter.add(null);
                 persistEntries();
+                break;
             case R.id.ResetButton:
                 /* Reset the results - the reset button has been pressed
                 * First, though, create a new dialog and check that the user *really* wants to reset all
@@ -172,6 +173,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                     }
                 }).setIcon(android.R.drawable.ic_dialog_alert)
                         .show();
+                break;
         }
     }
 

@@ -98,6 +98,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/Reset"
                 android:id="@+id/ResetButton"
+                android:onClick="onClick"
                 android:layout_gravity="center_horizontal"
                 android:drawableStart="@drawable/ic_clear_24dp"
                 android:drawableLeft="@drawable/ic_clear_24dp"/>
