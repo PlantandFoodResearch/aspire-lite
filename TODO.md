@@ -6,7 +6,7 @@ Remaining TODO items for this Android app.
 
 - Fix 5->20
 - Signing a test app - Jack Macensie?
-- Add the legal disclaimer, and get any text reviewed
+- Get the legal disclaimer text reviewed
 - Add a proper icon/branding
 - Finish the README
 - Ensure that the magic numbers are documented
