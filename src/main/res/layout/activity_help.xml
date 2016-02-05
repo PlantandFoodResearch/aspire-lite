@@ -92,7 +92,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/HelpBrixReadingsBlurb"
-                    android:id="@+id/textView9"
+                    android:id="@+id/HelpBrixReadingsText"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/textView7" />
             </RelativeLayout>

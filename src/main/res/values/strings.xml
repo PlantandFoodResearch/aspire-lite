@@ -69,11 +69,16 @@
     </string>
     <string name="BrixReadings">Brix% readings</string>
     <string name="HelpBrixReadingsBlurb">
-        Unfortunately, there is no documentation online describing how to collect the Brix%
-        samples.\n\n
-        As collecting the samples is both involved and vital to the accuracy of the result,
-        you should only use this system if you have had prior experience an Aspire system.
-        Hopefully this situation will change in the near future.
+        There is some old documentation online, from the original Aspire project, that describes how
+        to take the Brix% readings:\n\n
+        &#8226;
+        <a href="https://github.com/PlantandFoodResearch/aspire-lite/blob/master/brix-instructions-images.pdf?raw=true">
+            brix-instructions-images.pdf
+        </a>\n\n
+        &#8226;
+        <a href="https://github.com/PlantandFoodResearch/aspire-lite/blob/master/brix-instructions.pdf?raw=true">
+            brix-instructions.pdf
+        </a>
     </string>
     <string name="Limitations">Limitations</string>
     <string name="HelpLimitationsBlurb">
