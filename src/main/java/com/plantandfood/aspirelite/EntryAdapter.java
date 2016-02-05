@@ -80,7 +80,7 @@ public class EntryAdapter extends BaseAdapter {
         return entries.get(position);
     }
 
-    public void add(String value) {
+    public EditText create(String value) {
         /* Add a new entry to the list */
 
         /* Create a new entry widget */
@@ -133,8 +133,13 @@ public class EntryAdapter extends BaseAdapter {
 
         /* Add the item */
         entries.add(brix);
-
         this.notifyDataSetChanged();
+        return brix;
+    }
+
+    public void add() {
+        /* Respond to user input by creating a new entry widget, and then focusing it... */
+        EditText brix = create(null);
 
         /* Request the focus for the newly added element */
         brix.requestFocus();
@@ -144,8 +149,11 @@ public class EntryAdapter extends BaseAdapter {
         /* Remove all of the existing entries, and repopulate with count fresh boxes */
 
         entries.clear();
-        for (int i = 0; i < count; i ++) {
-            add(null);
+        /* Add an initial box to grab user focus */
+        add();
+        /* Create the remaining boxes */
+        for (int i = 0; i < (count - 1); i ++) {
+            create(null);
         }
     }
 

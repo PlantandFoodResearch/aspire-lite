@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             while ((character = file.read()) != -1) {
                 if (character == '\0') {
                     /* Save the current string */
-                    entryAdapter.add(current.toString());
+                    entryAdapter.create(current.toString());
                     log.log(Log.DEBUG, "Loaded a brix% reading of " + current.toString());
                     current = new StringBuilder();
                 } else {
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         /* Add any missing required boxes */
         int brix_count = getResources().getInteger(R.integer.MIN_BRIX_READINGS);
         for (int i = entryAdapter.size(); i < brix_count; i++) {
-            entryAdapter.add(null);
+            entryAdapter.create(null);
         }
 
         /* Update the display messages */
@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         switch (view.getId()) {
             case R.id.BrixPlus:
                 /* Add the entries */
-                entryAdapter.add(null);
+                entryAdapter.add();
                 persistEntries();
                 break;
             case R.id.ResetButton:
