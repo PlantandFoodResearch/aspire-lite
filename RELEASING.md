@@ -5,6 +5,7 @@ TODO: Write this...
 Steps to put out a new release:
 
 - Commit any changes
+- Update any copyright notices
 - Adjust the versionName to the current date (YYYY-MM-DD), and increment the
   versionCode (both are defined in build.gradle)
 - If using Android Studio, run "Sync project with gradle files"
