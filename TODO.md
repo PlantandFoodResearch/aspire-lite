@@ -7,10 +7,10 @@ Remaining TODO items for this Android app.
 - Fix 5->20
 - Signing a test app - Jack Macensie?
 - Get the legal disclaimer text reviewed
+- Get the help reviewed
 - Add a proper icon/branding
 - Finish the README
 - Ensure that the magic numbers are documented
-- Get the help reviewed
 - Ensure that the remaining documentation is online
 - Finish RELEASING.md
 
@@ -27,7 +27,7 @@ The GridView needs replacing:
 
 ## UI
 
-- Change the introduction method to be something more sane
+- Change the introduction text to something more useful
 - Get Warrick to test on a tablet
 - Figure out how to use styles
 - Figure out how to set a palette
