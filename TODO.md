@@ -23,6 +23,7 @@ The GridView needs replacing:
 - Animating new items appearing/reset would be nice
 - The entry boxes are not positioned well (centering?)
 - The focus rules are wonky
+- The first item in the GridView is broken after a couple of resets
 
 
 ## UI
@@ -38,7 +39,8 @@ The GridView needs replacing:
 
 - Message formatting/text sizes (visibility?)
 - Provide some feedback for scrolling down for messages
-- Underline entry boxes is not very clear; maybe pre-populate the first box?
+- Underline entry boxes is not very clear - add a hint into the first box, which vanishes when it
+  is focused, or start with it being focused.
 
 ### Keyboard
 
