@@ -34,11 +34,13 @@
     <string name="BrixErrorUnknownStage">"Unknown plant stage '%1$s'!"</string>
     <string name="BrixErrorUnknownCategory">"Unknown age category '%1$s'!"</string>
     <string name="BrixCHO">"Estimated CHO: %1$.0f"</string>
-
-    <!-- Help or documentation strings -->
+    <!-- Message strings for the user related to the inputs -->
+    <string name="CommentUpdated">"Calculated results"</string>
     <string name="Introduction">
         Please enter the Brix% readings
     </string>
+
+    <!-- Help or documentation strings -->
     <string name="HelpBlurb">
         Topics:\n
         &#8226; Plant stage definitions\n

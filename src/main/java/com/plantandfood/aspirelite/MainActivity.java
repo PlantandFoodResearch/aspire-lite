@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -33,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     EntryAdapter entryAdapter;
     /* Class-local Log instance */
     Log log;
+    /* Class-local Toast for recalculated events */
+    Toast toast;
     /* Spinner position */
     int spinnerValue;
     /* Current (valid) results */
@@ -73,11 +77,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
+        /* Initialise the toast */
+        toast = Toast.makeText(this, getResources().getString(R.string.CommentUpdated),
+                Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.TOP, 0, 0);
+
         /* Try to resume from the file */
         /* Find the current spinner value */
         try {
             FileInputStream file = openFileInput("plant-stage");
-            int spinnerValue = file.read();
+            spinnerValue = file.read();
             spinner.setSelection(spinnerValue);
             log.log(Log.DEBUG, "Loaded the plant stage of " + spinnerValue);
             file.close();
@@ -93,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 if (character == '\0') {
                     /* Save the current string */
                     entryAdapter.add(current.toString());
-                    log.log(Log.ERROR, "Loaded a brix% reading of " + current.toString());
+                    log.log(Log.DEBUG, "Loaded a brix% reading of " + current.toString());
                     current = new StringBuilder();
                 } else {
                     current.append((char) character);
@@ -108,6 +117,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         for (int i = entryAdapter.size(); i < brix_count; i++) {
             entryAdapter.add(null);
         }
+
+        /* Update the display messages */
+        updateMessages();
     }
 
     @Override
@@ -187,20 +199,26 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        /* Handle the spinner being selected - save the value, refresh the display */
-        spinnerValue = position;
-        /* Refresh the display */
-        refresh();
-        /* Spinner has something selected */
-        log.log(Log.DEBUG, "Spinner at position " + position + " has been selected");
-        /* Save the value */
-        try {
-            FileOutputStream file = openFileOutput("plant-stage", Context.MODE_PRIVATE);
-            file.write(spinnerValue);
-            file.close();
-            log.log(Log.DEBUG, "Saved the plant stage of " + spinnerValue);
-        } catch (Exception e) {
-            log.log(Log.WARN, "Error saving values; got " + e.toString());
+        /* Handle the spinner being selected.
+         * We first confirm that the spinnerValue has actually changed; if it has,
+         * save the value and refresh the display
+         */
+        if (spinnerValue != position) {
+            /* Note the value */
+            spinnerValue = position;
+            /* Refresh the display */
+            refresh();
+            /* Spinner has something selected */
+            log.log(Log.DEBUG, "Spinner at position " + position + " has been selected");
+            /* Save the value */
+            try {
+                FileOutputStream file = openFileOutput("plant-stage", Context.MODE_PRIVATE);
+                file.write(spinnerValue);
+                file.close();
+                log.log(Log.DEBUG, "Saved the plant stage of " + spinnerValue);
+            } catch (Exception e) {
+                log.log(Log.WARN, "Error saving values; got " + e.toString());
+            }
         }
     }
 
@@ -242,11 +260,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         /* Recalculate... something has changed */
         log.clear();
         log.log(Log.DEBUG, "Refreshing...");
-        if (!updateResults()) {
+        if (!updateMessages()) {
+            toast.show();
+        }
+    }
+
+    public boolean updateMessages() {
+        /* Update the displayed messages */
+        log.clear();
+        boolean error = updateResults();
+        if (!error) {
             /* Updating the results worked; print the CHO reading */
             log.log(Log.MESSAGE, getResources().getString(R.string.BrixCHO, cho()));
             comment();
         }
+        return error;
     }
 
     public boolean updateResults() {
