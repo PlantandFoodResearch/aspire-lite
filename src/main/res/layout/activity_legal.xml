@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/LegalBlurb"
-        android:id="@+id/textView12"
+        android:id="@+id/LegalText"
         android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
