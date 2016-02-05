@@ -16,5 +16,7 @@ Also see RELEASING.md and LICENSE.
 ## Author
 
 Author: Alastair Hughes
+
 Email: alastair.hughes@plantandfood.co.nz
+
 Email: hobbitalastair at yandex dot com
