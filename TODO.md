@@ -38,7 +38,6 @@ The GridView needs replacing:
 
 - Message formatting/text sizes (visibility?)
 - Provide some feedback for scrolling down for messages
-- Scroll to the text once we have something to show?
 - Underline entry boxes is not very clear; maybe pre-populate the first box?
 
 ### Keyboard
