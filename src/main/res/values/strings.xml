@@ -6,11 +6,11 @@
 
     <!-- Button strings -->
     <string name="PlantStageLabel">Plant stage:</string>
-    <string name="BrixReadingsLabel">Brix% readings:</string>
+    <string name="BrixReadingsLabel">Brix readings:</string>
     <string name="Plus">+</string>
     <string name="Minus">-</string>
     <string name="Reset">Reset</string>
-    <string name="ResetAll">Reset all the entered Brix% readings?</string>
+    <string name="ResetAll">Reset all the entered Brix readings?</string>
 
     <!-- Action strings -->
     <string name="Help">Help</string>
@@ -28,11 +28,11 @@
         <item>Dormancy</item>
     </string-array>
 
-    <!-- Error/warning message strings for the Brix% readings analysis -->
+    <!-- Error/warning message strings for the Brix readings analysis -->
     <string name="BrixErrorNotANumber">"Invalid number '%1$s'!"</string>
-    <string name="BrixErrorOutOfRange">"Invalid Brix%% reading (%1$.0f is not between %2$d and %3$d)!"</string>
+    <string name="BrixErrorOutOfRange">"Invalid Brix reading (%1$.0f is not between %2$d and %3$d)!"</string>
     <string name="BrixErrorTooVariable">"Outlier detected (%1$s)!"</string>
-    <string name="BrixErrorInsufficientValues">"Insufficient Brix%% readings entered (%1$d/%2$d)!"</string>
+    <string name="BrixErrorInsufficientValues">"Insufficient Brix readings entered (%1$d/%2$d)!"</string>
     <string name="BrixErrorOutOfRangeCHO">"Out of bounds CHO reading!"</string>
     <string name="BrixErrorUnknownStage">"Unknown plant stage '%1$s'!"</string>
     <string name="BrixErrorUnknownCategory">"Unknown age category '%1$s'!"</string>
@@ -40,14 +40,14 @@
     <!-- Message strings for the user related to the inputs -->
     <string name="CommentUpdated">"Calculated results"</string>
     <string name="Introduction">
-        Please enter the Brix% readings
+        Please enter the Brix readings
     </string>
 
     <!-- Help or documentation strings -->
     <string name="HelpBlurb">
         Topics:\n
         &#8226; Plant stage definitions\n
-        &#8226; Taking Brix% readings\n
+        &#8226; Taking Brix readings\n
         &#8226; App and model limitations\n
     </string>
     <string name="PlantStage">Plant stage</string>
@@ -72,10 +72,10 @@
         <b>Dormancy:</b>\n
         At the end of fall, when ferns have died.
     </string>
-    <string name="BrixReadings">Brix% readings</string>
+    <string name="BrixReadings">Brix readings</string>
     <string name="HelpBrixReadingsBlurb">
         There is some old documentation online, from the original Aspire project, that describes how
-        to take the Brix% readings:\n\n
+        to take the Brix readings:\n\n
         &#8226;
         <a href="https://github.com/PlantandFoodResearch/aspire-lite/blob/master/brix-instructions-images.pdf?raw=true">
             brix-instructions-images.pdf
