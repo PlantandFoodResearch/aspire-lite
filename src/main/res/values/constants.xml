@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="MIN_BRIX_READINGS">5</integer>
+    <!-- Minimum required Brix readings.
+        Note that this is a value determined statistically for the original
+        Aspire project, probably by Ruth Butler. According to the old
+        Aspire web pages, between 20 and 40 readings are required to ensure
+        some chance of accuracy.
+    -->
+    <integer name="MIN_BRIX_READINGS">20</integer>
 </resources>

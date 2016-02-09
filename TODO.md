@@ -4,7 +4,6 @@ Remaining TODO items for this Android app.
 
 ## Pre release
 
-- Fix 5->20
 - Signing a test app - Jack Macensie?
 - Get the legal disclaimer text reviewed
 - Get the help reviewed
