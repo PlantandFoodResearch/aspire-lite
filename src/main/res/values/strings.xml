@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Aspire Lite</string>
 
+    <!-- Misc -->
+    <string name="BrixHint">0</string> <!-- Hint for the Brix fields -->
+
     <!-- Button strings -->
     <string name="PlantStageLabel">Plant stage:</string>
     <string name="BrixReadingsLabel">Brix% readings:</string>
