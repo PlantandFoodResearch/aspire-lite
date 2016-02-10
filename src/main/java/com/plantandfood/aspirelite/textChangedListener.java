@@ -1,5 +1,7 @@
+/* Helper interface for supporting callbacks for the text changing */
+
 package com.plantandfood.aspirelite;
 
-public interface TextChangedListener {
+interface TextChangedListener {
     void textChangedCallback();
 }
