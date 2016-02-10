@@ -38,9 +38,7 @@ class EntryGrid extends ElementGrid {
 
     /* Bulk "on init" initialiser */
     private void onCreate() {
-        /* Initialise self
-        * Init the default variables, and create an "add" button.
-        */
+        /* Init the default variables, and create an "add" button */
         values = new ArrayList<>();
 
         /* Add the button */
