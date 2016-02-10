@@ -18,8 +18,6 @@ Remaining TODO items for this Android app.
 
 - Change the introduction text to something more useful
 - Get Warrick to test on a tablet
-- Figure out how to use styles
-- Figure out how to set a palette
 - Keep the screen on while entering data?
 - Log messages may end up being displayed to the user
 
@@ -47,7 +45,6 @@ Remaining TODO items for this Android app.
 - Split out the persistence/resume code?
 - Filenames should be constants
 - Use sp instead of dp where appropriate
-- MainActivity.updateResults marks the wrong thing as invalid (see the inline TODO)
 - Simplify the logging code to reduce getResources() usage
 - Fix the TODO's in the code...
 
@@ -59,9 +56,6 @@ Remaining TODO items for this Android app.
 - Get Warrick to send out the app for testing
 - Possibly restrict the range to being 2-32? Double check with Sarah
 - Add documentation for the magic numbers/other decisions
-  - 20 is apparently the minimum (Ruth Butler was the statistician?)
-- PFR Aspire webpage link?
-- Add an email to the feedback page?
 - Add support for importing/exporting data (from a clipboard? another app?)
 - Region-specific models
 - Fix any non-coding TODO's
