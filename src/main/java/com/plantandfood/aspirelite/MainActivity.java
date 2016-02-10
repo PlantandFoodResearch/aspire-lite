@@ -95,11 +95,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         } catch (Exception e) {
             log.log(Log.DEBUG, "Error loading plant stage; got " + e.toString());
         }
-        /* Add any missing brix boxes */
-        int brix_count = getResources().getInteger(R.integer.MIN_BRIX_READINGS);
-        for (int i = grid.size(); i < brix_count; i++) {
-            grid.add("");
-        }
 
         /* Update the display messages */
         updateMessages();
@@ -159,9 +154,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 /* Continue with the delete... */
-                                EntryGrid grid = (EntryGrid) findViewById(R.id.BrixEntryLayout);
-                                grid.reset(getResources().getInteger(R.integer.MIN_BRIX_READINGS));
-                                refresh();
+                                grid.reset();
                             }
                     }).setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {

@@ -24,6 +24,8 @@ class EntryGrid extends ElementGrid {
     TextChangedListener textChangedListener;
     /* The scroll to listener */
     ScrollToListener scrollToListener;
+    /* The number of boxes to have, at a minimum */
+    int min_count = getResources().getInteger(R.integer.MIN_BRIX_READINGS);
 
     /* Initialisers */
     public EntryGrid(Context context) {
@@ -120,6 +122,10 @@ class EntryGrid extends ElementGrid {
         } catch (Exception e) {
             Log.e("Aspire Lite", "Error loading brix readings; got " + e.toString());
         }
+        /* Add any more missing boxes */
+        for (int i = values.size(); i < min_count; i++) {
+            add("");
+        }
     }
 
     /* Listeners */
@@ -132,11 +138,11 @@ class EntryGrid extends ElementGrid {
         this.scrollToListener = listener;
     }
 
-    public void reset(int count) {
+    public void reset() {
         /* Reset the fields */
 
         /* Remove the excess fields */
-        while (values.size() > count) {
+        while (values.size() > min_count) {
             EditText edit = values.remove(values.size() - 1);
             this.removeView(edit);
         }
@@ -144,6 +150,14 @@ class EntryGrid extends ElementGrid {
         /* Clear the remaining */
         for (int i = 0; i < values.size(); i ++) {
             values.get(i).setText("");
+        }
+
+        /* Persist the current state */
+        persist();
+
+        /* Call the text changed callback */
+        if (textChangedListener != null) {
+            textChangedListener.textChangedCallback();
         }
     }
 
