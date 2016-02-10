@@ -49,8 +49,17 @@ public class EntryGrid extends ElementGrid {
         /* Set some attributes */
         plus.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                /* Handle the click event; add another entry and request focus
+                   for it.
+                 */
                 EditText entry = add("");
                 entry.requestFocus();
+                /* Call the text changed listener, since we do not currently handle
+                   persisting.
+                 */
+                if (textChangedListener != null) {
+                    textChangedListener.textChangedCallback();
+                }
             }
         });
         plus.setContentDescription(context.getResources().getString(R.string.Plus));
@@ -108,10 +117,7 @@ public class EntryGrid extends ElementGrid {
             entry.setText(string);
         }
 
-        /* Add the watcher for this item
-        * This just calls MainActivity.refresh; within my limited knowledge of Java, this seems to
-        * be the best that I can do.
-        */
+        /* Add the watcher for this item */
         entry.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -138,6 +144,11 @@ public class EntryGrid extends ElementGrid {
                     if (scrollToListener != null) {
                         scrollToListener.scrollTo(view);
                     }
+                    /* Clear the hint */
+                    ((EditText) view).setHint("");
+                } else {
+                    /* Set the hint */
+                    ((EditText) view).setHint(R.string.BrixHint);
                 }
             }
         });

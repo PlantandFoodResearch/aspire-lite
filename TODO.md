@@ -27,9 +27,8 @@ Remaining TODO items for this Android app.
 
 - Message formatting/text sizes (visibility?)
 - Provide some feedback for scrolling down for messages
-- Underline entry boxes is not very clear - add a hint into the first box, which vanishes when it
-  is focused, or start with it being focused.
 - Animating new items appearing/reset would be nice
+- Focus behaviour after the screen rotates is odd
 
 ### Keyboard
 

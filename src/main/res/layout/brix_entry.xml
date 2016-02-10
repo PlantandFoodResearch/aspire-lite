@@ -8,5 +8,6 @@
     android:gravity="center"
     android:imeOptions="flagNoExtractUi"
     android:editable="true"
+    android:hint="@string/BrixHint"
     >
 </EditText>
