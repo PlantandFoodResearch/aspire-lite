@@ -47,6 +47,8 @@ public class Log {
         } else if (level == ERROR) {
             view.setTextColor(Color.parseColor("red"));
             view.setTypeface(Typeface.DEFAULT_BOLD);
+        } else {
+            view.setTextColor(Color.parseColor("black"));
         }
         area.addView(view);
     }
