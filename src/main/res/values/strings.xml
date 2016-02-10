@@ -30,7 +30,7 @@
 
     <!-- Error/warning message strings for the Brix readings analysis -->
     <string name="BrixErrorNotANumber">"Invalid number '%1$s'!"</string>
-    <string name="BrixErrorOutOfRange">"Invalid Brix reading (%1$.0f is not between %2$d and %3$d)!"</string>
+    <string name="BrixErrorOutOfRange">"Invalid Brix reading (%1$s is not between %2$d and %3$d)!"</string>
     <string name="BrixErrorTooVariable">"Outlier detected (%1$s)!"</string>
     <string name="BrixErrorInsufficientValues">"Insufficient Brix readings entered (%1$d/%2$d)!"</string>
     <string name="BrixErrorOutOfRangeCHO">"Out of bounds CHO reading!"</string>
