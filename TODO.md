@@ -34,13 +34,11 @@ Remaining TODO items for this Android app.
 
 ## Refactor
 
-- Separate EntryAdapter from activity_main
 - Review private/public interfaces
 - Split out calculation code from activity_main
 - General code cleanup
 - Add more comments and fix/update existing
 - Split out the persistence/resume code?
-- Filenames should be constants
 - Simplify the logging code to reduce getResources() usage
 - Move the constants into the resource files
 - Fix the TODO's in the code...

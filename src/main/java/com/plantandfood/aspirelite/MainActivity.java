@@ -86,7 +86,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         /* Try to resume from the file */
         /* Find the current spinner value */
         try {
-            FileInputStream file = openFileInput("plant-stage");
+            FileInputStream file = openFileInput(
+                    getResources().getString(R.string.persist_plant_stage));
             spinnerValue = file.read();
             spinner.setSelection(spinnerValue);
             log.log(Log.DEBUG, "Loaded the plant stage of " + spinnerValue);
@@ -96,7 +97,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
         /* Load the brix values */
         try {
-            FileInputStream file = openFileInput("brix-readings");
+            FileInputStream file = openFileInput(
+                    getResources().getString(R.string.persist_brix_readings));
             int character;
             StringBuilder current = new StringBuilder();
             while ((character = file.read()) != -1) {
@@ -214,7 +216,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             log.log(Log.DEBUG, "Spinner at position " + position + " has been selected");
             /* Save the value */
             try {
-                FileOutputStream file = openFileOutput("plant-stage", Context.MODE_PRIVATE);
+                FileOutputStream file = openFileOutput(
+                        getResources().getString(R.string.persist_plant_stage),
+                        Context.MODE_PRIVATE);
                 file.write(spinnerValue);
                 file.close();
                 log.log(Log.DEBUG, "Saved the plant stage of " + spinnerValue);
@@ -238,7 +242,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private void persistEntries() {
         /* Persist the entries */
         try {
-            FileOutputStream file = openFileOutput("brix-readings", Context.MODE_PRIVATE);
+            FileOutputStream file = openFileOutput(
+                    getResources().getString(R.string.persist_brix_readings),
+                    Context.MODE_PRIVATE);
             EntryGrid grid = (EntryGrid) findViewById(R.id.BrixEntryLayout);
             for (int i = 0; i < grid.size(); i ++) {
                 /* Persist this item */

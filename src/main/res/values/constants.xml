@@ -7,4 +7,6 @@
         some chance of accuracy.
     -->
     <integer name="MIN_BRIX_READINGS">20</integer>
+    <string name="persist_plant_stage">plant-stage</string>
+    <string name="persist_brix_readings">brix-readings</string>
 </resources>
