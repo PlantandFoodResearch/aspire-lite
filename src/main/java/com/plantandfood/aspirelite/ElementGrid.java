@@ -38,7 +38,8 @@ public class ElementGrid extends ViewGroup {
         TypedArray array = context.getTheme().obtainStyledAttributes(attrs,
                 R.styleable.ElementGrid, 0, 0);
         try {
-            columnWidth = array.getInteger(R.styleable.ElementGrid_columnWidth, 100);
+            columnWidth = array.getDimensionPixelSize(
+                    R.styleable.ElementGrid_columnWidth, 100);
         } finally {
             array.recycle();
         }
