@@ -1,3 +1,5 @@
+/* Activity for the Feedback screen */
+
 package com.plantandfood.aspirelite;
 
 import android.os.Bundle;

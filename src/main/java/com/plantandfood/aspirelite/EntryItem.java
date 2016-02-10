@@ -1,9 +1,11 @@
+/* A wrapper around the EditText with a couple of helper methods */
+
 package com.plantandfood.aspirelite;
 
 import android.graphics.Color;
 import android.widget.EditText;
 
-public class EntryItem {
+class EntryItem {
 
     /* EditText for this entry */
     EditText edit;

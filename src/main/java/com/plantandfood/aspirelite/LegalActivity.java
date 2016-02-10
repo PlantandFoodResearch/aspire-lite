@@ -1,3 +1,5 @@
+/* Activity for the Legal screen */
+
 package com.plantandfood.aspirelite;
 
 import android.os.Bundle;

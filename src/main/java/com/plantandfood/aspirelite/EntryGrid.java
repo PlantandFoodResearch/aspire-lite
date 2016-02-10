@@ -1,3 +1,5 @@
+/* Grid containing the entry widgets and a "+" button */
+
 package com.plantandfood.aspirelite;
 
 import android.content.Context;
@@ -11,7 +13,7 @@ import android.widget.ImageButton;
 
 import java.util.ArrayList;
 
-public class EntryGrid extends ElementGrid {
+class EntryGrid extends ElementGrid {
 
     /* The local EditTexts... */
     ArrayList<EditText> values;

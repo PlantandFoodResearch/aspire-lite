@@ -1,3 +1,5 @@
+/* Activity for the Help screen */
+
 package com.plantandfood.aspirelite;
 
 import android.os.Bundle;

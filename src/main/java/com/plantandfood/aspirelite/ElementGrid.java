@@ -1,3 +1,8 @@
+/* ElementGrid implements a basic GridView-like object, which is not
+   scrollable, and is quite a bit less prone to unusual bugs.
+   I'm not suggesting that there isn't any, just that there are less.
+ */
+
 package com.plantandfood.aspirelite;
 
 import android.content.Context;
