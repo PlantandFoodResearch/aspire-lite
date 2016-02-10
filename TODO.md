@@ -53,9 +53,7 @@ Remaining TODO items for this Android app.
 
 - Tests (check against database data, unit and ui tests)
   - Sarah has spreadsheet data for the tests
-- Get Warrick to send out the app for testing
 - Possibly restrict the range to being 2-32? Double check with Sarah
-- Add documentation for the magic numbers/other decisions
 - Add support for importing/exporting data (from a clipboard? another app?)
 - Region-specific models
 - Fix any non-coding TODO's
