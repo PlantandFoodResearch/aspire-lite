@@ -4,13 +4,10 @@ Remaining TODO items for this Android app.
 
 ## Pre release
 
-- Signing a test app - Jack Macensie?
-- Get the legal disclaimer text reviewed
 - Get the help reviewed
-- Add a proper icon/branding
-- Finish the README
+- Finish README.md
 - Ensure that the magic numbers are documented
-- Ensure that the remaining documentation is online
+- Ensure that the remaining documentation is online (and email to Warrick)
 - Finish RELEASING.md
 
 
@@ -44,8 +41,8 @@ Remaining TODO items for this Android app.
 - Add more comments and fix/update existing
 - Split out the persistence/resume code?
 - Filenames should be constants
-- Use sp instead of dp where appropriate
 - Simplify the logging code to reduce getResources() usage
+- Move the constants into the resource files
 - Fix the TODO's in the code...
 
 
