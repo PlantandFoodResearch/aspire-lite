@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- Define the custom BrixPlus button id -->
-    <item name="BrixPlus" type="id"/>
-</resources>

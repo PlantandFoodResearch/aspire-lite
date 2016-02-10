@@ -19,7 +19,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -29,10 +28,10 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener,
-        View.OnClickListener {
+        TextChangedListener, ScrollToListener {
 
-    /* Class-local EntryAdapter instance */
-    EntryAdapter entryAdapter;
+    /* Class-local grid instance */
+    EntryGrid grid;
     /* Class-local Log instance */
     Log log;
     /* Class-local Toast for recalculated events */
@@ -61,13 +60,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         /* Set the current view */
         setContentView(R.layout.activity_main);
 
+        /* Save the EntryGrid reference */
+        grid = (EntryGrid) findViewById(R.id.BrixEntryLayout);
+        /* Set the callback listeners... */
+        grid.setTextChangedListener(this);
+        grid.setScrollToListener(this);
+
         /* Initialise the logger */
         this.log = new Log(this, (LinearLayout)findViewById(R.id.MessageList));
-
-        /* Create the entryAdapter and populate the grid */
-        GridView entryLayout = (GridView) findViewById(R.id.BrixEntryLayout);
-        entryAdapter = new EntryAdapter(this);
-        entryLayout.setAdapter(entryAdapter);
 
         /* Initialise the spinner */
         Spinner spinner = (Spinner) findViewById(R.id.PlantStageSpinner);
@@ -78,7 +78,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         spinner.setOnItemSelectedListener(this);
 
         /* Initialise the toast */
-        toast = Toast.makeText(this, getResources().getString(R.string.CommentUpdated),
+        toast = Toast.makeText(this,
+                getResources().getString(R.string.CommentUpdated),
                 Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.TOP, 0, 0);
 
@@ -93,15 +94,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         } catch (Exception e) {
             log.log(Log.DEBUG, "Error loading plant stage; got " + e.toString());
         }
-        /* Load the brix% values */
+        /* Load the brix values */
         try {
             FileInputStream file = openFileInput("brix-readings");
             int character;
             StringBuilder current = new StringBuilder();
             while ((character = file.read()) != -1) {
                 if (character == '\0') {
-                    /* Save the current string */
-                    entryAdapter.create(current.toString());
+                    /* Dump the current string */
+                    grid.add(current.toString());
                     log.log(Log.DEBUG, "Loaded a brix% reading of " + current.toString());
                     current = new StringBuilder();
                 } else {
@@ -114,8 +115,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
         /* Add any missing required boxes */
         int brix_count = getResources().getInteger(R.integer.MIN_BRIX_READINGS);
-        for (int i = entryAdapter.size(); i < brix_count; i++) {
-            entryAdapter.create(null);
+        for (int i = grid.size(); i < brix_count; i++) {
+            grid.add("");
         }
 
         /* Update the display messages */
@@ -156,14 +157,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         return true;
     }
 
+    public void textChangedCallback() {
+        /* Handle a text changed callback */
+        updateEntries();
+    }
+
     public void onClick(View view) {
         /* Handle a click */
         switch (view.getId()) {
-            case R.id.BrixPlus:
-                /* Add the entries */
-                entryAdapter.add();
-                persistEntries();
-                break;
             case R.id.ResetButton:
                 /* Reset the results - the reset button has been pressed
                 * First, though, create a new dialog and check that the user *really* wants to reset all
@@ -176,7 +177,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 /* Continue with the delete... */
-                                entryAdapter.reset(getResources().getInteger(R.integer.MIN_BRIX_READINGS));
+                                EntryGrid grid = (EntryGrid) findViewById(R.id.BrixEntryLayout);
+                                grid.reset(getResources().getInteger(R.integer.MIN_BRIX_READINGS));
                                 updateEntries();
                             }
                     }).setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
@@ -237,9 +239,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         /* Persist the entries */
         try {
             FileOutputStream file = openFileOutput("brix-readings", Context.MODE_PRIVATE);
-            for (int i = 0; i < entryAdapter.size(); i ++) {
+            EntryGrid grid = (EntryGrid) findViewById(R.id.BrixEntryLayout);
+            for (int i = 0; i < grid.size(); i ++) {
                 /* Persist this item */
-                String value = entryAdapter.getItem(i);
+                String value = grid.get(i).toString();
                 for (int c = 0; c < value.length(); c++) {
                     int character = value.charAt(c);
                     if (character != '\0') {
@@ -281,33 +284,38 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         /* Find the Brix% readings, sanitizing/updating as we go */
 
         /* Gather the initial dataset */
+        ArrayList<EntryItem> validItems = new ArrayList<>();
         results = new ArrayList<>();
         boolean error = false;
-        for (int i = 0; i < entryAdapter.size(); i ++) {
+        for (int i = 0; i < grid.size(); i ++) {
             /* Check that item */
-            String value = entryAdapter.getItem(i);
-            if (value.length() != 0) {
+            EntryItem item = grid.get(i);
+            if (item.toString().length() != 0) {
                 try {
                     /* Add the value (if it converts and is valid) */
-                    Float brix = Float.parseFloat(value);
+                    Float brix = item.getBrix();
                     if (brix < 0 || brix > 32) {
                         /* Out of range! */
                         error = true;
-                        log.log(Log.ERROR, getResources().getString(R.string.BrixErrorOutOfRange,
-                                brix, 0, 32));
-                        entryAdapter.markInvalid(i);
+                        log.log(Log.ERROR,
+                                getResources().getString(R.string.BrixErrorOutOfRange,
+                                item.toString(), 0, 32));
+                        item.set_valid(false);
                     } else {
                         /* A valid result!
                         * Clear any formatting and add the result.
                         */
+                        validItems.add(item);
                         results.add(brix);
-                        entryAdapter.markValid(i);
+                        item.set_valid(true);
                     }
                 } catch (NumberFormatException e) {
                     /* Not a number */
                     error = true;
-                    log.log(Log.ERROR, getResources().getString(R.string.BrixErrorNotANumber, value));
-                    entryAdapter.markInvalid(i);
+                    log.log(Log.ERROR,
+                            getResources().getString(R.string.BrixErrorNotANumber,
+                                    item.toString()));
+                    item.set_valid(false);
                 }
             }
         }
@@ -318,17 +326,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
          * TODO: Is this really valuable? Perhaps just change the "Insufficient readings" text to
          *       be a "MESSAGE"?
          */
-        if (!error && (results.size() == 0)) {
+        if (!error && (validItems.size() == 0)) {
             log.log(Log.MESSAGE, getResources().getString(R.string.Introduction));
             return true;
         }
 
         /* Check the value count */
         int min_entries = getResources().getInteger(R.integer.MIN_BRIX_READINGS);
-        if (min_entries > results.size()) {
+        if (min_entries > validItems.size()) {
             /* Bail out, the count is too small */
             log.log(Log.ERROR, getResources().getString(R.string.BrixErrorInsufficientValues,
-                    results.size(), min_entries));
+                    validItems.size(), min_entries));
             error = true;
         }
 
@@ -337,22 +345,22 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
          * are still being entered.
          */
         if (!error) {
-            ArrayList<Float> sanitized = new ArrayList<>();
             float stddev = stddevResult();
             float mean = meanResult();
-            for (int i = 0; i < results.size(); i++) {
-                if (results.get(i) < mean - (stddev * OUTLIER_RANGE) ||
-                        results.get(i) > mean + (stddev * OUTLIER_RANGE)) {
-                    log.log(Log.ERROR, getResources().getString(R.string.BrixErrorTooVariable, results.get(i)));
+            results = new ArrayList<>();
+            for (int i = 0; i < validItems.size(); i++) {
+                float brix = validItems.get(i).getBrix();
+                if (brix < mean - (stddev * OUTLIER_RANGE) ||
+                        brix > mean + (stddev * OUTLIER_RANGE)) {
+                    log.log(Log.ERROR,
+                            getResources().getString(R.string.BrixErrorTooVariable,
+                                    validItems.get(i).toString()));
                     error = true;
-                    /* TODO: This is buggy (will not work if there is an empty entry) */
-                    entryAdapter.markInvalid(i);
+                    validItems.get(i).set_valid(false);
                 } else {
-                    sanitized.add(results.get(i));
+                    results.add(brix);
                 }
             }
-            /* Save the sanitized results */
-            results = sanitized;
         }
 
         return error;
