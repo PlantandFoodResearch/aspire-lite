@@ -95,27 +95,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         } catch (Exception e) {
             log.log(Log.DEBUG, "Error loading plant stage; got " + e.toString());
         }
-        /* Load the brix values */
-        try {
-            FileInputStream file = openFileInput(
-                    getResources().getString(R.string.persist_brix_readings));
-            int character;
-            StringBuilder current = new StringBuilder();
-            while ((character = file.read()) != -1) {
-                if (character == '\0') {
-                    /* Dump the current string */
-                    grid.add(current.toString());
-                    log.log(Log.DEBUG, "Loaded a brix% reading of " + current.toString());
-                    current = new StringBuilder();
-                } else {
-                    current.append((char) character);
-                }
-            }
-            file.close();
-        } catch (Exception e) {
-            log.log(Log.DEBUG, "Error loading brix% readings; got " + e.toString());
-        }
-        /* Add any missing required boxes */
+        /* Add any missing brix boxes */
         int brix_count = getResources().getInteger(R.integer.MIN_BRIX_READINGS);
         for (int i = grid.size(); i < brix_count; i++) {
             grid.add("");
@@ -161,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     public void textChangedCallback() {
         /* Handle a text changed callback */
-        updateEntries();
+        refresh();
     }
 
     public void onClick(View view) {
@@ -181,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                 /* Continue with the delete... */
                                 EntryGrid grid = (EntryGrid) findViewById(R.id.BrixEntryLayout);
                                 grid.reset(getResources().getInteger(R.integer.MIN_BRIX_READINGS));
-                                updateEntries();
+                                refresh();
                             }
                     }).setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
@@ -231,38 +211,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onNothingSelected(AdapterView<?> parent) {
         /* Spinner is deselected */
         log.log(Log.DEBUG, "Spinner is deselected");
-    }
-
-    public void updateEntries() {
-        /* Persist the entries, then refresh */
-        persistEntries();
-        refresh();
-    }
-
-    private void persistEntries() {
-        /* Persist the entries */
-        try {
-            FileOutputStream file = openFileOutput(
-                    getResources().getString(R.string.persist_brix_readings),
-                    Context.MODE_PRIVATE);
-            EntryGrid grid = (EntryGrid) findViewById(R.id.BrixEntryLayout);
-            for (int i = 0; i < grid.size(); i ++) {
-                /* Persist this item */
-                String value = grid.get(i).toString();
-                for (int c = 0; c < value.length(); c++) {
-                    int character = value.charAt(c);
-                    if (character != '\0') {
-                        /* We use \0 (a null byte) as a delimeter */
-                        file.write(character);
-                    }
-                }
-                file.write('\0');
-                log.log(Log.DEBUG, "Saved a Brix% reading of " + value);
-            }
-            file.close();
-        } catch (Exception e) {
-            log.log(Log.WARN, "Error saving values; got " + e.toString());
-        }
     }
 
     public void refresh() {

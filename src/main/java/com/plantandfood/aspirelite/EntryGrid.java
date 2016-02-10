@@ -10,7 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.util.Log;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 class EntryGrid extends ElementGrid {
@@ -65,6 +68,58 @@ class EntryGrid extends ElementGrid {
         plus.setContentDescription(context.getResources().getString(R.string.Plus));
         /* Add it to this */
         this.addView(plus);
+
+        /* Load the old values */
+        load();
+    }
+
+    /* Persist/resume code */
+    private void persist() {
+        /* Attempt to persist the entries */
+        try {
+            FileOutputStream file = context.openFileOutput(
+                    getResources().getString(R.string.persist_brix_readings),
+                    Context.MODE_PRIVATE);
+            EntryGrid grid = (EntryGrid) findViewById(R.id.BrixEntryLayout);
+            for (int i = 0; i < grid.size(); i++) {
+                /* Persist this item */
+                String value = grid.get(i).toString();
+                for (int c = 0; c < value.length(); c++) {
+                    int character = value.charAt(c);
+                    if (character != '\0') {
+                        /* We use \0 (a null byte) as a delimiter */
+                        file.write(character);
+                    }
+                }
+                file.write('\0');
+            }
+            file.close();
+            Log.d("Aspire Lite", "Saved Brix readings");
+        } catch (Exception e) {
+            Log.e("Aspire Lite", "Error saving values; got " + e.toString());
+        }
+    }
+    private void load() {
+        /* Load the saved values */
+        try {
+            FileInputStream file = context.openFileInput(
+                    getResources().getString(R.string.persist_brix_readings));
+            int character;
+            StringBuilder current = new StringBuilder();
+            while ((character = file.read()) != -1) {
+                if (character == '\0') {
+                    /* Dump the current string */
+                    add(current.toString());
+                    current = new StringBuilder();
+                } else {
+                    current.append((char) character);
+                }
+            }
+            file.close();
+            Log.d("Aspire Lite", "Loaded Brix readings");
+        } catch (Exception e) {
+            Log.e("Aspire Lite", "Error loading brix readings; got " + e.toString());
+        }
     }
 
     /* Listeners */
@@ -72,7 +127,6 @@ class EntryGrid extends ElementGrid {
         /* Set the local listener for an entry changing */
         this.textChangedListener = listener;
     }
-
     public void setScrollToListener(ScrollToListener listener) {
         /* Set the local listener for an entry changing */
         this.scrollToListener = listener;
@@ -134,6 +188,7 @@ class EntryGrid extends ElementGrid {
                 if (textChangedListener != null) {
                     textChangedListener.textChangedCallback();
                 }
+                persist();
             }
         });
 
