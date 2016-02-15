@@ -270,8 +270,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         /* Check if there were no values.
          * If so, print a different message and return, to avoid "frightening" first time users
          * with a bold red error...
-         * TODO: Is this really valuable? Perhaps just change the "Insufficient readings" text to
-         *       be a "MESSAGE"?
+         * TODO: Is this really valuable? Perhaps just change the "Insufficient readings" text?
          */
         if (!error && (validItems.size() == 0)) {
             log.log(Log.MESSAGE, getResources().getString(R.string.Introduction));
@@ -282,7 +281,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         int min_entries = getResources().getInteger(R.integer.MIN_BRIX_READINGS);
         if (min_entries > validItems.size()) {
             /* Bail out, the count is too small */
-            log.log(Log.ERROR, getResources().getString(R.string.BrixErrorInsufficientValues,
+            log.log(Log.MESSAGE, getResources().getString(R.string.BrixErrorInsufficientValues,
                     validItems.size(), min_entries));
             error = true;
         }
@@ -347,6 +346,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         // TODO: Implement young crop support.
         // TODO: Load the data from a database?
+        // TODO: Clean this up...
 
         if (age_category == AGE_MATURE) {
             if (spinnerValue == 0) {
