@@ -128,50 +128,8 @@ class EntryGrid extends ElementGrid {
         }
     }
 
-    /* Listeners */
-    public void setTextChangedListener(TextChangedListener listener) {
-        /* Set the local listener for an entry changing */
-        this.textChangedListener = listener;
-    }
-    public void setScrollToListener(ScrollToListener listener) {
-        /* Set the local listener for an entry changing */
-        this.scrollToListener = listener;
-    }
-
-    public void reset() {
-        /* Reset the fields */
-
-        /* Remove the excess fields */
-        while (values.size() > min_count) {
-            EditText edit = values.remove(values.size() - 1);
-            this.removeView(edit);
-        }
-
-        /* Clear the remaining */
-        for (int i = 0; i < values.size(); i ++) {
-            values.get(i).setText("");
-        }
-
-        /* Persist the current state */
-        persist();
-
-        /* Call the text changed callback */
-        if (textChangedListener != null) {
-            textChangedListener.textChangedCallback();
-        }
-    }
-
-    public int size() {
-        /* Return the size - the number of entries */
-        return values.size();
-    }
-
-    public EntryItem get(int index) {
-        /* Return an item representing the item at the given index */
-        return new EntryItem(values.get(index));
-    }
-
-    public EditText add(String string) {
+    /* Internal 'add' function */
+    private EditText add(String string) {
         /* Add another item */
 
         /* Inflate the XML for the entry widget */
@@ -228,5 +186,48 @@ class EntryGrid extends ElementGrid {
 
         /* Return the result */
         return entry;
+    }
+
+    /* Listeners */
+    public void setTextChangedListener(TextChangedListener listener) {
+        /* Set the local listener for an entry changing */
+        this.textChangedListener = listener;
+    }
+    public void setScrollToListener(ScrollToListener listener) {
+        /* Set the local listener for an entry changing */
+        this.scrollToListener = listener;
+    }
+
+    public void reset() {
+        /* Reset the fields */
+
+        /* Remove the excess fields */
+        while (values.size() > min_count) {
+            EditText edit = values.remove(values.size() - 1);
+            this.removeView(edit);
+        }
+
+        /* Clear the remaining */
+        for (int i = 0; i < values.size(); i ++) {
+            values.get(i).setText("");
+        }
+
+        /* Persist the current state */
+        persist();
+
+        /* Call the text changed callback */
+        if (textChangedListener != null) {
+            textChangedListener.textChangedCallback();
+        }
+    }
+
+    public int size() {
+        /* Return the size - the number of entries */
+        return values.size();
+    }
+
+    public EntryItem get(int index) {
+        /* Return an item representing the item at the given index */
+        return new EntryItem(values.get(index));
     }
 }
