@@ -18,6 +18,9 @@ import java.util.ArrayList;
 
 class EntryGrid extends ElementGrid {
 
+    /* Logging tag */
+    String LogTag = "EntryGrid";
+
     /* The local EditTexts... */
     ArrayList<EditText> values;
     /* The local text changed listener */
@@ -26,6 +29,8 @@ class EntryGrid extends ElementGrid {
     ScrollToListener scrollToListener;
     /* The number of boxes to have, at a minimum */
     int min_count = getResources().getInteger(R.integer.MIN_BRIX_READINGS);
+    /* The currently focused element */
+    int currentFocused;
 
     /* Initialisers */
     public EntryGrid(Context context) {
@@ -55,16 +60,19 @@ class EntryGrid extends ElementGrid {
         plus.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 /* Handle the click event; add another entry and request focus
-                   for it.
+                 * for it.
                  */
                 EditText entry = add("");
-                entry.requestFocus();
-                /* Call the text changed listener, since we do not currently handle
-                   persisting.
+                /* Set the focus to the newly added element, and scroll to
+                 * bring it into view.
                  */
-                if (textChangedListener != null) {
-                    textChangedListener.textChangedCallback();
+                entry.requestFocus();
+                if (scrollToListener != null) {
+                    scrollToListener.scrollTo(view);
                 }
+                persist_focus(entry);
+                /* The boxes have changed, so add another value */
+                persist_values();
             }
         });
         plus.setContentDescription(context.getResources().getString(R.string.Plus));
@@ -72,11 +80,13 @@ class EntryGrid extends ElementGrid {
         this.addView(plus);
 
         /* Load the old values */
-        load();
+        load_values();
+        /* Load the old focused element, and apply */
+        load_focus();
     }
 
-    /* Persist/resume code */
-    private void persist() {
+    /* Persist/resume values code */
+    private void persist_values() {
         /* Attempt to persist the entries */
         try {
             FileOutputStream file = context.openFileOutput(
@@ -96,12 +106,12 @@ class EntryGrid extends ElementGrid {
                 file.write('\0');
             }
             file.close();
-            Log.d("Aspire Lite", "Saved Brix readings");
+            Log.d(LogTag, "Saved brix readings");
         } catch (Exception e) {
-            Log.e("Aspire Lite", "Error saving values; got " + e.toString());
+            Log.e(LogTag, "Error saving values; got " + e.toString());
         }
     }
-    private void load() {
+    private void load_values() {
         /* Load the saved values */
         try {
             FileInputStream file = context.openFileInput(
@@ -118,15 +128,53 @@ class EntryGrid extends ElementGrid {
                 }
             }
             file.close();
-            Log.d("Aspire Lite", "Loaded Brix readings");
+            Log.d(LogTag, "Loaded brix readings");
         } catch (Exception e) {
-            Log.e("Aspire Lite", "Error loading brix readings; got " + e.toString());
+            Log.e(LogTag, "Error loading brix readings; got " + e.toString());
         }
         /* Add any more missing boxes */
         for (int i = values.size(); i < min_count; i++) {
             add("");
         }
     }
+    /* Persist/resume focus code */
+    private void persist_focus(EditText focused) {
+        /* Attempt to persist the current focus */
+        currentFocused = values.indexOf(focused);
+        try {
+            FileOutputStream file = context.openFileOutput(
+                    getResources().getString(R.string.persist_brix_focus),
+                    Context.MODE_PRIVATE);
+            file.write(currentFocused);
+            file.close();
+            Log.d(LogTag, "Saved brix focus");
+        } catch (Exception e) {
+            Log.e(LogTag, "Error saving focus; got " + e.toString());
+        }
+    }
+    private void load_focus() {
+        /* Load the saved focus value */
+        try {
+            FileInputStream file = context.openFileInput(
+                    getResources().getString(R.string.persist_brix_focus));
+            currentFocused = file.read();
+            if (currentFocused >= size()) {
+                Log.w(LogTag, "Invalid focused element " + currentFocused);
+            } else {
+                if (currentFocused != -1) {
+                    values.get(currentFocused).requestFocus();
+                    if (scrollToListener != null) {
+                        scrollToListener.scrollTo(values.get(currentFocused));
+                    }
+                }
+                Log.d(LogTag, "Loaded brix focus");
+            }
+            file.close();
+        } catch (Exception e) {
+            Log.e(LogTag, "Error loading brix focus; got " + e.toString());
+        }
+    }
+
 
     /* Internal 'add' function */
     private EditText add(String string) {
@@ -160,22 +208,23 @@ class EntryGrid extends ElementGrid {
                 if (textChangedListener != null) {
                     textChangedListener.textChangedCallback();
                 }
-                persist();
+                persist_values();
             }
         });
 
-        /* Add a handler so that the screens scrolls to this element once focused */
+        /* Add a handler so that the focus is persisted */
         entry.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             public void onFocusChange(final View view, boolean hasFocus) {
                 if (hasFocus) {
-                    if (scrollToListener != null) {
-                        scrollToListener.scrollTo(view);
-                    }
                     /* Clear the hint */
                     ((EditText) view).setHint("");
+                    /* Update the focused result */
+                    persist_focus((EditText)view);
                 } else {
                     /* Set the hint */
                     ((EditText) view).setHint(R.string.BrixHint);
+                    /* Update the focused result */
+                    persist_focus(null);
                 }
             }
         });
@@ -213,7 +262,10 @@ class EntryGrid extends ElementGrid {
         }
 
         /* Persist the current state */
-        persist();
+        persist_values();
+        /* Request and set the focus to the first element */
+        values.get(0).requestFocus();
+        persist_focus(values.get(0));
 
         /* Call the text changed callback */
         if (textChangedListener != null) {
