@@ -11,25 +11,27 @@ Remaining TODO items for this Android app.
 - Finish RELEASING.md
 
 
+## Focus ##
+
+- Focus behaviour with the next buttons stops working at the bottom of a row
+  of inputs
+- Rotating the screen might re-extend the keyboard (elements loose focus)
+- Keyboard does not vanish on tap-off
+
+
 ## UI
 
 - Change the introduction text to something more useful
 - Get Warrick to test on a tablet
 - Keep the screen on while entering data?
 - Log messages may end up being displayed to the user
+- Custom keyboard
 
 ### UX or discoverability
 
 - Message formatting/text sizes (visibility?)
 - Provide some feedback for scrolling down for messages
 - Animating new items appearing/reset would be nice
-- Focus behaviour after the screen rotates is odd
-
-### Keyboard
-
-- Custom keyboard
-- Keyboard not vanishing on "tap-off" - difficult to fix?
-- Rotating the screen retracts the keyboard (elements loose focus)
 
 
 ## Refactor
@@ -42,6 +44,7 @@ Remaining TODO items for this Android app.
 - Simplify the logging code to reduce getResources() usage
 - Move the constants into the resource files
 - Fix the TODO's in the code...
+- Extract the spinner behaviour out of MainActivity?
 
 
 ## Other
@@ -52,3 +55,4 @@ Remaining TODO items for this Android app.
 - Add support for importing/exporting data (from a clipboard? another app?)
 - Region-specific models
 - Fix any non-coding TODO's
+- "Who is Sarah Sinton" - note who the mentioned people are
