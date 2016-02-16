@@ -1,4 +1,4 @@
-/* Logger interfaces for messages generated */
+/* Logger interface for user-facing messages */
 
 package com.plantandfood.aspirelite;
 
@@ -7,5 +7,4 @@ interface Logger {
     void clear();
     void message(String message);
     void error(String error);
-
 }
