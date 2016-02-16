@@ -7,8 +7,6 @@ package com.plantandfood.aspirelite;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -18,14 +16,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
-        implements SomethingChangedListener, ScrollToListener, Logger {
+        implements SomethingChangedListener, ScrollToListener {
 
     /* Class-local Toast for recalculated events */
     private Toast toast;
@@ -131,7 +127,8 @@ public class MainActivity extends AppCompatActivity
 
     private boolean updateMessages() {
         /* Update the displayed messages */
-        clear();
+        MessageList logger = (MessageList) findViewById(R.id.MessageList);
+        logger.clear();
         /* Create a BrixCalc of the results */
         ArrayList<EntryItem> readings = new ArrayList<>();
         EntryGrid grid = (EntryGrid) findViewById(R.id.BrixEntryLayout);
@@ -139,31 +136,7 @@ public class MainActivity extends AppCompatActivity
             readings.add(grid.get(i));
         }
         /* Return the result */
-        return (new BrixCalc(getResources(), readings)).calculate(this,
+        return (new BrixCalc(getResources(), readings)).calculate(logger,
                 (PlantStageSpinner) findViewById(R.id.PlantStageSpinner));
-    }
-
-    /* Logging interface */
-    // TODO: Move this into a separate class?
-    public void clear() {
-        /* Clear all existing messages */
-        ((LinearLayout) findViewById(R.id.MessageList)).removeAllViews();
-    }
-
-    public void message(String message) {
-        /* Log a message */
-        TextView text = new TextView(this);
-        text.setText(message);
-        text.setTextColor(Color.parseColor("black"));
-        ((LinearLayout) findViewById(R.id.MessageList)).addView(text);
-    }
-
-    public void error(String error) {
-        /* Log an error message */
-        TextView text = new TextView(this);
-        text.setText(error);
-        text.setTextColor(Color.parseColor("red"));
-        text.setTypeface(Typeface.DEFAULT_BOLD);
-        ((LinearLayout) findViewById(R.id.MessageList)).addView(text);
     }
 }
