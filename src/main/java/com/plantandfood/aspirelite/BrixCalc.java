@@ -265,6 +265,9 @@ class BrixCalc {
     public boolean calculate(Logger logger, PlantStageSpinner spinner) {
         /* Calculate and display the results */
 
+        /* Clear the logger */
+        logger.clear();
+
         /* Sanitize the results, and bail on error */
         float mean = sanitize(logger, readings);
         if (mean == -1) {

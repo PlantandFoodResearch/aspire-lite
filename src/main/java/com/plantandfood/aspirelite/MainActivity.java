@@ -127,16 +127,17 @@ public class MainActivity extends AppCompatActivity
 
     private boolean updateMessages() {
         /* Update the displayed messages */
-        MessageList logger = (MessageList) findViewById(R.id.MessageList);
-        logger.clear();
-        /* Create a BrixCalc of the results */
+
+        /* Create an ArrayList of the items */
         ArrayList<EntryItem> readings = new ArrayList<>();
         EntryGrid grid = (EntryGrid) findViewById(R.id.BrixEntryLayout);
         for (int i = 0; i < grid.size(); i++) {
             readings.add(grid.get(i));
         }
-        /* Return the result */
-        return (new BrixCalc(getResources(), readings)).calculate(logger,
+
+        /* Update the messages, and return the result */
+        return (new BrixCalc(getResources(), readings)).calculate(
+                (MessageList) findViewById(R.id.MessageList),
                 (PlantStageSpinner) findViewById(R.id.PlantStageSpinner));
     }
 }
