@@ -20,24 +20,6 @@ class BrixCalc {
         this.res = res;
         this.readings = readings;
     }
-
-    private float mean(ArrayList<Float> results) {
-        /* Calculate the mean of the given results */
-        float total = 0;
-        for (int i = 0; i < results.size(); i++) {
-            total += results.get(i);
-        }
-        return total / results.size();
-    }
-
-    private float stddev(float mean, ArrayList<Float> results) {
-        /* Calculate the standard deviation of the given results */
-        float sum = 0;
-        for (int i = 0; i < results.size(); i++) {
-            sum += Math.pow(mean - results.get(i), 2f);
-        }
-        return (float) Math.sqrt(sum / results.size());
-    }
     
     private float sanitize(Logger logger, EntryGrid readings) {
         /* Sanitize the given Brix readings */
@@ -106,8 +88,8 @@ class BrixCalc {
         for (int i = 0; i < validItems.size(); i ++) {
             results.add(validItems.get(i).getBrix());
         }
-        float mean = mean(results);
-        float stddev = stddev(mean, results);
+        float mean = Calc.mean(results);
+        float stddev = Calc.stddev(mean, results);
         /* Now check for outliers */
         int outlier_range = res.getInteger(R.integer.OUTLIER_RANGE);
         error = false;
