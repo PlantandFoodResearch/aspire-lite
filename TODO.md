@@ -6,19 +6,14 @@ Remaining TODO items for this Android app.
 
 - Finish README.md (link to app store)
 - Ensure that the remaining documentation is online (and email to Warrick)
-- Sanity check
 
 
 ## UI
 
-- Change the introduction text to something more useful
-- Get Warrick to test on a tablet
-- Keep the screen on while entering data?
 - "Outlier detected" message needs improving - actionable?
 
 ### UX or discoverability
 
-- Message formatting/text sizes (visibility?)
 - Provide some feedback for scrolling down for messages
 - Animating new items appearing/reset would be nice
 
