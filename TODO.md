@@ -11,15 +11,8 @@ Remaining TODO items for this Android app.
 ## UI
 
 - "Outlier detected" message needs improving - actionable?
-
-### UX or discoverability
-
 - Provide some feedback for scrolling down for messages
 - Animating new items appearing/reset would be nice
-
-### Keyboard
-
-- Rotating the screen might re-extend the keyboard (elements regain focus)
 - Keyboard does not vanish on tap-off
 - Custom keyboard
 
