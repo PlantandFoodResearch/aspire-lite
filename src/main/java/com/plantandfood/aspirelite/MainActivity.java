@@ -158,6 +158,8 @@ public class MainActivity extends AppCompatActivity
         results = new ArrayList<>();
         boolean error = false;
         EntryGrid grid = (EntryGrid) findViewById(R.id.BrixEntryLayout);
+        int brixMinimum = getResources().getInteger(R.integer.BRIX_MINIMUM);
+        int brixMaximum = getResources().getInteger(R.integer.BRIX_MAXIMUM);
         for (int i = 0; i < grid.size(); i ++) {
             /* Check that item */
             EntryItem item = grid.get(i);
@@ -165,12 +167,12 @@ public class MainActivity extends AppCompatActivity
                 try {
                     /* Add the value (if it converts and is valid) */
                     Float brix = item.getBrix();
-                    if (brix < 0 || brix > 32) {
+                    if (brix < brixMinimum || brix > brixMaximum) {
                         /* Out of range! */
                         error = true;
                         log.log(Log.ERROR,
                                 getResources().getString(R.string.BrixErrorOutOfRange,
-                                item.toString(), 0, 32));
+                                item.toString(), brixMinimum, brixMaximum));
                         item.set_valid(false);
                     } else {
                         /* A valid result!

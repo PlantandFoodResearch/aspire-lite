@@ -30,6 +30,15 @@
     <integer name="AGE_YOUNG">1</integer> <!-- Young crop id -->
     <integer name="AGE_MATURE">2</integer> <!-- Mature crop id -->
 
+    <!-- Brix range constants.
+        According to Sarah, the maximum value for a Brix meter is 32, so
+        that is the upper end. The lowest value is based on real data;
+        unfortunately it is pretty close to 0, the lowest that the Brix meter
+        can go, so probably won't help much.
+    -->
+    <integer name="BRIX_MINIMUM">2</integer>
+    <integer name="BRIX_MAXIMUM">32</integer>
+
     <!-- File names for the persistence code -->
     <string name="persist_plant_stage">plant-stage</string>
     <string name="persist_brix_focus">brix-focus</string>

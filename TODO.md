@@ -9,6 +9,7 @@ Remaining TODO items for this Android app.
 - Ensure that the magic numbers are documented
 - Ensure that the remaining documentation is online (and email to Warrick)
 - Finish RELEASING.md
+- Double check the restricted range with Sarah
 
 
 ## Focus ##
@@ -49,7 +50,6 @@ Remaining TODO items for this Android app.
 
 - Tests (check against database data, unit and ui tests)
   - Sarah has spreadsheet data for the tests
-- Possibly restrict the range to being 2-32? Double check with Sarah
 - Add support for importing/exporting data (from a clipboard? another app?)
 - Implement young crop support
 - Region-specific models
