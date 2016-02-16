@@ -16,7 +16,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
-class EntryGrid extends ElementGrid {
+public class EntryGrid extends ElementGrid {
 
     /* Logging tag */
     private String LogTag = "EntryGrid";
