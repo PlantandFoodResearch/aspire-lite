@@ -13,7 +13,7 @@ import android.widget.Spinner;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-public class PlantStageSpinner extends Spinner
+class PlantStageSpinner extends Spinner
         implements AdapterView.OnItemSelectedListener {
 
     /* Local LogTag */
