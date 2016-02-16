@@ -4,7 +4,7 @@ package com.plantandfood.aspirelite;
 
 import java.util.ArrayList;
 
-class Calc {
+public class Calc {
 
     public static float mean(ArrayList<Float> results) {
         /* Calculate the mean of the given results */
@@ -23,4 +23,5 @@ class Calc {
         }
         return (float) Math.sqrt(sum / results.size());
     }
+
 }
