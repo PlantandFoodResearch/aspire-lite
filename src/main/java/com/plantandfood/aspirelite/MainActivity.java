@@ -24,8 +24,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity
         implements SomethingChangedListener, ScrollToListener {
 
-    /* Class-local grid instance */
-    EntryGrid grid;
     /* Class-local Log instance */
     Log log;
     /* Class-local Toast for recalculated events */
@@ -53,7 +51,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         /* Save the EntryGrid reference */
-        grid = (EntryGrid) findViewById(R.id.BrixEntryLayout);
+        EntryGrid grid = (EntryGrid) findViewById(R.id.BrixEntryLayout);
         /* Set the callback listeners... */
         grid.somethingChangedListener = this;
         grid.scrollToListener = this;
@@ -121,7 +119,7 @@ public class MainActivity extends AppCompatActivity
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         /* Continue with the delete... */
-                        grid.reset();
+                        ((EntryGrid) findViewById(R.id.BrixEntryLayout)).reset();
                     }
             }).setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
@@ -168,6 +166,7 @@ public class MainActivity extends AppCompatActivity
         ArrayList<EntryItem> validItems = new ArrayList<>();
         results = new ArrayList<>();
         boolean error = false;
+        EntryGrid grid = (EntryGrid) findViewById(R.id.BrixEntryLayout);
         for (int i = 0; i < grid.size(); i ++) {
             /* Check that item */
             EntryItem item = grid.get(i);
