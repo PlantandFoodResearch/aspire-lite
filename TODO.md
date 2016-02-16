@@ -15,7 +15,7 @@ Remaining TODO items for this Android app.
 
 - Focus behaviour with the next buttons stops working at the bottom of a row
   of inputs
-- Rotating the screen might re-extend the keyboard (elements loose focus)
+- Rotating the screen might re-extend the keyboard (elements regain focus)
 - Keyboard does not vanish on tap-off
 
 
@@ -40,7 +40,6 @@ Remaining TODO items for this Android app.
 - Split out calculation code from activity_main
 - General code cleanup
 - Add more comments and fix/update existing
-- Split out the persistence/resume code?
 - Simplify the logging code to reduce getResources() usage
 - Move the constants into the resource files
 - Fix the TODO's in the code...

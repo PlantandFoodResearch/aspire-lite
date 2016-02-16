@@ -5,7 +5,6 @@
 
 package com.plantandfood.aspirelite;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
@@ -18,13 +17,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener,
@@ -36,8 +31,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Log log;
     /* Class-local Toast for recalculated events */
     Toast toast;
-    /* Spinner position */
-    int spinnerValue;
     /* Current (valid) results */
     ArrayList<Float> results;
 
@@ -70,11 +63,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         this.log = new Log(this, (LinearLayout)findViewById(R.id.MessageList));
 
         /* Initialise the spinner */
-        Spinner spinner = (Spinner) findViewById(R.id.PlantStageSpinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.plant_stage_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        PlantStageSpinner spinner =
+                (PlantStageSpinner) findViewById(R.id.PlantStageSpinner);
         spinner.setOnItemSelectedListener(this);
 
         /* Initialise the toast */
@@ -82,19 +72,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 getResources().getString(R.string.CommentUpdated),
                 Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.TOP, 0, 0);
-
-        /* Try to resume from the file */
-        /* Find the current spinner value */
-        try {
-            FileInputStream file = openFileInput(
-                    getResources().getString(R.string.persist_plant_stage));
-            spinnerValue = file.read();
-            spinner.setSelection(spinnerValue);
-            log.log(Log.DEBUG, "Loaded the plant stage of " + spinnerValue);
-            file.close();
-        } catch (Exception e) {
-            log.log(Log.DEBUG, "Error loading plant stage; got " + e.toString());
-        }
 
         /* Update the display messages */
         updateMessages();
@@ -172,27 +149,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         /* Handle the spinner being selected.
-         * We first confirm that the spinnerValue has actually changed; if it has,
-         * save the value and refresh the display
+         * We first confirm that the spinner's value has actually changed; if
+         * it has, save the value and refresh the display
          */
-        if (spinnerValue != position) {
+        PlantStageSpinner spinner = (PlantStageSpinner) findViewById(R.id.PlantStageSpinner);
+        if (spinner.value != position) {
             /* Note the value */
-            spinnerValue = position;
+            spinner.value = position;
             /* Refresh the display */
             refresh();
             /* Spinner has something selected */
             log.log(Log.DEBUG, "Spinner at position " + position + " has been selected");
             /* Save the value */
-            try {
-                FileOutputStream file = openFileOutput(
-                        getResources().getString(R.string.persist_plant_stage),
-                        Context.MODE_PRIVATE);
-                file.write(spinnerValue);
-                file.close();
-                log.log(Log.DEBUG, "Saved the plant stage of " + spinnerValue);
-            } catch (Exception e) {
-                log.log(Log.WARN, "Error saving values; got " + e.toString());
-            }
+            spinner.persist();
         }
     }
 
@@ -338,6 +307,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         boolean error = false;
         int age_category = AGE_MATURE;
         float cho = cho();
+        int spinnerValue = ((PlantStageSpinner)
+                findViewById(R.id.PlantStageSpinner)).value;
 
         // TODO: Implement young crop support.
         // TODO: Load the data from a database?
