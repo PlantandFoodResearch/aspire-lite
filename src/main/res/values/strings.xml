@@ -103,7 +103,6 @@
         on <a href="https://github.com/PlantandFoodResearch/aspire-lite">Github</a>.
     </string>
     <string name="LegalBlurb">
-        <!-- TODO: This needs to be checked before a formal release... -->
         This program is free software: you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation, either version 3 of the License, or
@@ -118,10 +117,6 @@
         along with this program.  If not, see
         <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.
     </string>
-    <!-- TODO: Get this checked, fix any mistakes, add attribution for the other people who also
-        helped, etc...
-        This is also not a legally binding disclaimer.
-    -->
     <!-- Because we are formatting and using HTML tags, ensure that any tag starts are properly
         escaped. This does look quite ugly, but it works... and seems to be the recommended
         solution.
@@ -153,7 +148,7 @@
         "Root CHO content is below normal for this stage of the annual growth cycle, probably due to inadequate replenishment of root reserves during the previous fern growth season. This could have resulted from poor fern establishment, additional flushes during fern growth or premature fern loss or needle drop. These may have been caused by too much water, a foliar disease such as Stemphylium or physical damage such as that caused by wind or hail.  Spear yield will probably be lower than normal."
     </string>
     <string name="comment_d1_350">
-        "Root CHO content is below normal for this stage of the annual growth cycle, probably due to inadequate replenishment of root reserves during the previous fern growth season. This could have resulted from poor fern establishment, additional flushes during fern growth or premature fern loss or needle drop. These may have been caused by too much water, a foliar disease such as Stemphylium or physical damage such as that caused by wind or hail.  Spear yield will probably be lower than normal."
+        "Root CHO content is good but not as high as it could be at this stage of the annual growth cycle,  probably due to incomplete replenishment of root reserves during the previous fern growth season.  This could have resulted from additional flushes during fern growth or premature fern loss or needle drop.  These may have been caused by too much water, a foliar disease such as Stemphylium or physical damage such as that caused by wind or hail.  As a result, spear yield could be reduced below optimum, especially if weather conditions are unfavourable for spear growth during harvest. A shorter harvest than usual would allow a longer fern growth period and, therefore, more opportunity for root recovery after close-up."
     </string>
     <string name="comment_d1_450">
         "The root system is full of CHO, as it should be at this stage of the annual growth cycle.  This is due to full replenishment of root CHO reserves during the previous fern growth season.  As a result, CHO availability will not restrict spear yield, and subsequent fern growth should be good."
