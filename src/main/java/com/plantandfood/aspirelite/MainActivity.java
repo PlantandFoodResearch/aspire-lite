@@ -25,11 +25,11 @@ public class MainActivity extends AppCompatActivity
         implements SomethingChangedListener, ScrollToListener {
 
     /* Class-local Log instance */
-    Log log;
+    private Log log;
     /* Class-local Toast for recalculated events */
-    Toast toast;
+    private Toast toast;
     /* Current (valid) results */
-    ArrayList<Float> results;
+    private ArrayList<Float> results;
 
     /* Constants */
     /* CHO calculation constants */
@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    public boolean updateMessages() {
+    private boolean updateMessages() {
         /* Update the displayed messages */
         log.clear();
         boolean error = updateResults();
@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity
         return error;
     }
 
-    public boolean updateResults() {
+    private boolean updateResults() {
         /* Find the Brix% readings, sanitizing/updating as we go */
 
         /* Gather the initial dataset */
@@ -245,7 +245,7 @@ public class MainActivity extends AppCompatActivity
         return error;
     }
 
-    public float meanResult() {
+    private float meanResult() {
         /* Calculate the mean result */
         float total = 0;
         for (int i = 0; i < results.size(); i ++) {
@@ -254,7 +254,7 @@ public class MainActivity extends AppCompatActivity
         return total / results.size();
     }
 
-    public float stddevResult() {
+    private float stddevResult() {
         /* Find the standard deviation of the results */
         float sum = 0;
         float avg = meanResult();
@@ -264,12 +264,12 @@ public class MainActivity extends AppCompatActivity
         return (float)Math.sqrt(sum / results.size());
     }
 
-    public float cho() {
+    private float cho() {
         /* Return the estimated CHO reading */
         return CHO_INTERCEPT + (CHO_SLOPE * meanResult());
     }
 
-    public void comment() {
+    private void comment() {
         /* Print a comment on the currently estimated CHO reading and plant stage */
 
         String comment;
