@@ -86,16 +86,6 @@ class BrixCalc {
             }
         }
 
-        /* Check if there were no values.
-         * If so, print a different message and return, to avoid "frightening" first time users
-         * with a bold red error...
-         * TODO: Is this really valuable? Perhaps just change the "Insufficient readings" text?
-         */
-        if (!error && (validItems.size() == 0)) {
-            logger.message(res.getString(R.string.Introduction));
-            return -1f;
-        }
-
         /* Check the value count */
         int min_entries = res.getInteger(R.integer.MIN_BRIX_READINGS);
         if (min_entries > validItems.size()) {

@@ -39,9 +39,6 @@
     <string name="BrixCHO">"Estimated CHO: %1$.0f"</string>
     <!-- Message strings for the user related to the inputs -->
     <string name="CommentUpdated">"Calculated results"</string>
-    <string name="Introduction">
-        Please enter the Brix readings
-    </string>
 
     <!-- Help or documentation strings -->
     <string name="HelpBlurb">
