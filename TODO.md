@@ -6,7 +6,6 @@ Remaining TODO items for this Android app.
 
 - Get the help reviewed
 - Finish README.md
-- Ensure that the magic numbers are documented
 - Ensure that the remaining documentation is online (and email to Warrick)
 - Finish RELEASING.md
 - Double check the restricted range with Sarah
@@ -25,7 +24,6 @@ Remaining TODO items for this Android app.
 - Change the introduction text to something more useful
 - Get Warrick to test on a tablet
 - Keep the screen on while entering data?
-- Log messages may end up being displayed to the user
 - Custom keyboard
 - "Outlier detected" message needs improving - actionable?
 
@@ -38,12 +36,10 @@ Remaining TODO items for this Android app.
 
 ## Refactor
 
-- Review private/public interfaces
-- Split out calculation code from activity_main
 - General code cleanup
 - Add more comments and fix/update existing
-- Simplify the logging code to reduce getResources() usage
 - Fix the TODO's in the code...
+- Clean up the calculation code
 
 
 ## Other
