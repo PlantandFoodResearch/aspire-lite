@@ -1,6 +1,12 @@
-# Aspire Lite
+# Aspire Asparagus Lite
 
-TODO: Fill in this README...
+This android app is designed to help asparagus farmers make crop management
+decisions, for instance when to stop harvesting.
+It uses Brix readings gathered from the roots of the asparagus plants to
+determine an estimated CHO level, and from that can give a recommendation on
+the plant state.
+
+See the help menu in the app for details.
 
 ## Contributing
 

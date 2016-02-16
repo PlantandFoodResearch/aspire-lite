@@ -4,11 +4,9 @@ Remaining TODO items for this Android app.
 
 ## Pre release
 
-- Get the help reviewed
-- Finish README.md
+- Finish README.md (link to app store)
 - Ensure that the remaining documentation is online (and email to Warrick)
-- Finish RELEASING.md
-- Double check the restricted range with Sarah
+- Sanity check
 
 
 ## UI
