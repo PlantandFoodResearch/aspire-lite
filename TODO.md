@@ -11,14 +11,6 @@ Remaining TODO items for this Android app.
 - Double check the restricted range with Sarah
 
 
-## Focus ##
-
-- Focus behaviour with the next buttons stops working at the bottom of a row
-  of inputs
-- Rotating the screen might re-extend the keyboard (elements regain focus)
-- Keyboard does not vanish on tap-off
-
-
 ## UI
 
 - Change the introduction text to something more useful
@@ -32,6 +24,12 @@ Remaining TODO items for this Android app.
 - Message formatting/text sizes (visibility?)
 - Provide some feedback for scrolling down for messages
 - Animating new items appearing/reset would be nice
+
+### Keyboard
+
+- Rotating the screen might re-extend the keyboard (elements regain focus)
+- Keyboard does not vanish on tap-off
+- Custom keyboard
 
 
 ## Refactor

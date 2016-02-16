@@ -6,7 +6,7 @@
     android:inputType="numberDecimal"
     android:singleLine="true"
     android:gravity="center"
-    android:imeOptions="flagNoExtractUi"
+    android:imeOptions="actionNext|flagNoExtractUi"
     android:editable="true"
     android:hint="@string/BrixHint"
     >
