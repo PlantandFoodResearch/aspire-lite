@@ -8,6 +8,13 @@ Steps to put out a new release:
   versionCode (both are defined in build.gradle)
 - If using Android Studio, run "Sync project with gradle files"
 - Build and test
+  - Change the build variant to "Android Instrumentation Tests"
+  - Run the individual test files in androidTest/java/com/plantandfood/aspirelite/
+    (right click on the file in Android Studio, click "Run ...")
+  - Change the build variant to "Unit Tests"
+  - Run the individual test files in test/java/com/plantandfood/aspirelite/
+    (right click on the file in Android Studio, click "Run ...")
+- Fix any failures
 - Commit any remaining changes
 - Tag the commit to be released off (VCS->Git->Tag in Android studio, the tag
   name should be the same as the versionName)
