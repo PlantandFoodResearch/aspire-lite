@@ -41,7 +41,6 @@ Remaining TODO items for this Android app.
 - General code cleanup
 - Add more comments and fix/update existing
 - Simplify the logging code to reduce getResources() usage
-- Move the constants into the resource files
 - Fix the TODO's in the code...
 
 

@@ -8,6 +8,28 @@
     -->
     <integer name="MIN_BRIX_READINGS">20</integer>
 
+    <!-- CHO constants.
+        These values are used to convert between a mean Brix reading and an
+        estimated CHO value.
+    -->
+    <item name="CHO_SLOPE" format="float" type="string">18</item>
+    <item name="CHO_INTERCEPT" format="float" type="string">66.8</item>
+
+    <!-- Outlier range constant.
+        This is the number of standard deviations away from the mean a value
+        can be. This is another statistical result, so probably determined
+        by Ruth Butler.
+    -->
+    <integer name="OUTLIER_RANGE">2</integer>
+
+    <!-- Crop age constants.
+        These values are largely unused, but they might be used if the
+        secondary, experimental model for younger crops is ever added.
+    -->
+    <integer name="AGE_OF_CROP_MATURITY">4</integer> <!-- In years -->
+    <integer name="AGE_YOUNG">1</integer> <!-- Young crop id -->
+    <integer name="AGE_MATURE">2</integer> <!-- Mature crop id -->
+
     <!-- File names for the persistence code -->
     <string name="persist_plant_stage">plant-stage</string>
     <string name="persist_brix_focus">brix-focus</string>

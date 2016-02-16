@@ -7,10 +7,12 @@ package com.plantandfood.aspirelite;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,17 +32,6 @@ public class MainActivity extends AppCompatActivity
     private Toast toast;
     /* Current (valid) results */
     private ArrayList<Float> results;
-
-    /* Constants */
-    /* CHO calculation constants */
-    float CHO_INTERCEPT = 66.8f;
-    float CHO_SLOPE = 18f;
-    /* Crop age constants */
-    int AGE_OF_CROP_MATURITY = 4; // In years.
-    int AGE_YOUNG = 1;
-    int AGE_MATURE = 2;
-    /* Data verification constants */
-    int OUTLIER_RANGE = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -223,14 +214,15 @@ public class MainActivity extends AppCompatActivity
          * the results. This prevents an error showing for possibly valid results while the values
          * are still being entered.
          */
+        int outlier_range = getResources().getInteger(R.integer.OUTLIER_RANGE);
         if (!error) {
             float stddev = stddevResult();
             float mean = meanResult();
             results = new ArrayList<>();
             for (int i = 0; i < validItems.size(); i++) {
                 float brix = validItems.get(i).getBrix();
-                if (brix < mean - (stddev * OUTLIER_RANGE) ||
-                        brix > mean + (stddev * OUTLIER_RANGE)) {
+                if (brix < mean - (stddev * outlier_range) ||
+                        brix > mean + (stddev * outlier_range)) {
                     log.log(Log.ERROR,
                             getResources().getString(R.string.BrixErrorTooVariable,
                                     validItems.get(i).toString()));
@@ -266,7 +258,17 @@ public class MainActivity extends AppCompatActivity
 
     private float cho() {
         /* Return the estimated CHO reading */
-        return CHO_INTERCEPT + (CHO_SLOPE * meanResult());
+
+        /* Load the CHO slope and intercept values */
+        Resources res = getResources();
+        TypedValue value = new TypedValue();
+        res.getValue(R.string.CHO_INTERCEPT, value, true);
+        float cho_intercept = value.getFloat();
+        res.getValue(R.string.CHO_SLOPE, value, true);
+        float cho_slope = value.getFloat();
+
+        /* Return the result */
+        return cho_intercept + (cho_slope * meanResult());
     }
 
     private void comment() {
@@ -274,7 +276,7 @@ public class MainActivity extends AppCompatActivity
 
         String comment;
         boolean error = false;
-        int age_category = AGE_MATURE;
+        int age_category = getResources().getInteger(R.integer.AGE_MATURE);
         float cho = cho();
         int spinnerValue = ((PlantStageSpinner)
                 findViewById(R.id.PlantStageSpinner))
@@ -284,7 +286,7 @@ public class MainActivity extends AppCompatActivity
         // TODO: Load the data from a database?
         // TODO: Clean this up...
 
-        if (age_category == AGE_MATURE) {
+        if (age_category == getResources().getInteger(R.integer.AGE_MATURE)) {
             if (spinnerValue == 0) {
                 if (cho >= 0 && cho < 150) {
                     comment = getResources().getString(R.string.comment_d1_0);
