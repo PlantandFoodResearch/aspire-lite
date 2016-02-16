@@ -12,9 +12,9 @@ class BrixCalc {
     /* Global resource handle */
     private Resources res;
     /* Saved readings */
-    private ArrayList<EntryItem> readings;
+    private EntryGrid readings;
     
-    public BrixCalc(Resources res, ArrayList<EntryItem> readings) {
+    public BrixCalc(Resources res, EntryGrid readings) {
         /* Save the given values */
         
         this.res = res;
@@ -39,8 +39,7 @@ class BrixCalc {
         return (float) Math.sqrt(sum / results.size());
     }
     
-    private float sanitize(Logger logger, 
-                                      ArrayList<EntryItem> readings) {
+    private float sanitize(Logger logger, EntryGrid readings) {
         /* Sanitize the given Brix readings */
         // TODO: Split this up into smaller functions.
         
