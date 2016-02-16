@@ -16,7 +16,6 @@ Remaining TODO items for this Android app.
 - Change the introduction text to something more useful
 - Get Warrick to test on a tablet
 - Keep the screen on while entering data?
-- Custom keyboard
 - "Outlier detected" message needs improving - actionable?
 
 ### UX or discoverability
@@ -47,5 +46,4 @@ Remaining TODO items for this Android app.
 - Add support for importing/exporting data (from a clipboard? another app?)
 - Implement young crop support
 - Region-specific models
-- Fix any non-coding TODO's
 - "Who is Sarah Sinton" - note who the mentioned people are
