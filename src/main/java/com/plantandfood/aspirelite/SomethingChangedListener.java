@@ -2,6 +2,6 @@
 
 package com.plantandfood.aspirelite;
 
-interface TextChangedListener {
+interface SomethingChangedListener {
     void textChangedCallback();
 }

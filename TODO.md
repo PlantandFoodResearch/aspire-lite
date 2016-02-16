@@ -43,7 +43,6 @@ Remaining TODO items for this Android app.
 - Simplify the logging code to reduce getResources() usage
 - Move the constants into the resource files
 - Fix the TODO's in the code...
-- Extract the spinner behaviour out of MainActivity?
 
 
 ## Other

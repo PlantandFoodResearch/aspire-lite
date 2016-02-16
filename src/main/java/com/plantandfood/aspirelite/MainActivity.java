@@ -22,8 +22,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener,
-        TextChangedListener, ScrollToListener {
+public class MainActivity extends AppCompatActivity
+        implements SomethingChangedListener, ScrollToListener {
 
     /* Class-local grid instance */
     EntryGrid grid;
@@ -63,9 +63,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         this.log = new Log(this, (LinearLayout)findViewById(R.id.MessageList));
 
         /* Initialise the spinner */
-        PlantStageSpinner spinner =
-                (PlantStageSpinner) findViewById(R.id.PlantStageSpinner);
-        spinner.setOnItemSelectedListener(this);
+        ((PlantStageSpinner) findViewById(R.id.PlantStageSpinner)).listener =
+                this;
 
         /* Initialise the toast */
         toast = Toast.makeText(this,
@@ -145,29 +144,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 findViewById(R.id.MainView).scrollTo(0, view.getBottom());
             }
         });
-    }
-
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        /* Handle the spinner being selected.
-         * We first confirm that the spinner's value has actually changed; if
-         * it has, save the value and refresh the display
-         */
-        PlantStageSpinner spinner = (PlantStageSpinner) findViewById(R.id.PlantStageSpinner);
-        if (spinner.value != position) {
-            /* Note the value */
-            spinner.value = position;
-            /* Refresh the display */
-            refresh();
-            /* Spinner has something selected */
-            log.log(Log.DEBUG, "Spinner at position " + position + " has been selected");
-            /* Save the value */
-            spinner.persist();
-        }
-    }
-
-    public void onNothingSelected(AdapterView<?> parent) {
-        /* Spinner is deselected */
-        log.log(Log.DEBUG, "Spinner is deselected");
     }
 
     public void refresh() {
@@ -308,7 +284,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         int age_category = AGE_MATURE;
         float cho = cho();
         int spinnerValue = ((PlantStageSpinner)
-                findViewById(R.id.PlantStageSpinner)).value;
+                findViewById(R.id.PlantStageSpinner))
+                .getSelectedItemPosition();
 
         // TODO: Implement young crop support.
         // TODO: Load the data from a database?
@@ -398,8 +375,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     error = true;
                 }
             } else {
-                /* TODO: Translate this into an actual string */
-                comment = getResources().getString(R.string.BrixErrorUnknownStage, spinnerValue);
+                comment = getResources().getString(R.string.BrixErrorUnknownStage,
+                        ((PlantStageSpinner) findViewById(R.id.PlantStageSpinner))
+                                .getSelectedItem().toString());
                 error = true;
             }
         } else {

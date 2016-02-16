@@ -5,13 +5,16 @@ package com.plantandfood.aspirelite;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-public class PlantStageSpinner extends Spinner {
+public class PlantStageSpinner extends Spinner
+        implements AdapterView.OnItemSelectedListener {
 
     /* Local LogTag */
     private String LogTag = "PlantStageSpinner";
@@ -19,7 +22,10 @@ public class PlantStageSpinner extends Spinner {
     /* Local context */
     private Context context;
     /* Current value */
-    int value;
+    private int value;
+
+    /* Callback for changes */
+    SomethingChangedListener listener;
 
     /* Initialisers */
     public PlantStageSpinner(Context context) {
@@ -46,15 +52,15 @@ public class PlantStageSpinner extends Spinner {
                 android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         this.setAdapter(adapter);
+        this.setOnItemSelectedListener(this);
 
         /* Load the current state */
         load();
     }
 
     /* Persist/resume code */
-    public void persist() {
+    private void persist() {
         /* Save the current value */
-        // TODO: Make this private.
         try {
             FileOutputStream file = context.openFileOutput(
                     getResources().getString(R.string.persist_plant_stage),
@@ -80,4 +86,24 @@ public class PlantStageSpinner extends Spinner {
         }
     }
 
+    /* Handlers for selection/deselection */
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        /* Handle the spinner being selected.
+         * We first confirm that the spinner's value has actually changed; if
+         * it has, save the value and refresh the display
+         */
+        if (value != position) {
+            /* Save the value */
+            value = position;
+            /* Save the value */
+            persist();
+            /* Call the listener, if set */
+            if (listener != null) {
+                listener.textChangedCallback();
+            }
+        }
+    }
+    public void onNothingSelected(AdapterView<?> parent) {
+        /* Spinner is deselected. We ignore this... */
+    }
 }
