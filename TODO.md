@@ -26,6 +26,7 @@ Remaining TODO items for this Android app.
 - Keep the screen on while entering data?
 - Log messages may end up being displayed to the user
 - Custom keyboard
+- "Outlier detected" message needs improving - actionable?
 
 ### UX or discoverability
 
@@ -50,6 +51,7 @@ Remaining TODO items for this Android app.
   - Sarah has spreadsheet data for the tests
 - Possibly restrict the range to being 2-32? Double check with Sarah
 - Add support for importing/exporting data (from a clipboard? another app?)
+- Implement young crop support
 - Region-specific models
 - Fix any non-coding TODO's
 - "Who is Sarah Sinton" - note who the mentioned people are

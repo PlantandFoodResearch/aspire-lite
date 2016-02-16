@@ -276,108 +276,100 @@ public class MainActivity extends AppCompatActivity
 
         String comment;
         boolean error = false;
-        int age_category = getResources().getInteger(R.integer.AGE_MATURE);
         float cho = cho();
         int spinnerValue = ((PlantStageSpinner)
                 findViewById(R.id.PlantStageSpinner))
                 .getSelectedItemPosition();
 
-        // TODO: Implement young crop support.
         // TODO: Load the data from a database?
         // TODO: Clean this up...
 
-        if (age_category == getResources().getInteger(R.integer.AGE_MATURE)) {
-            if (spinnerValue == 0) {
-                if (cho >= 0 && cho < 150) {
-                    comment = getResources().getString(R.string.comment_d1_0);
-                } else if (cho >= 150 && cho < 250) {
-                    comment = getResources().getString(R.string.comment_d1_150);
-                } else if (cho >= 250 && cho < 350) {
-                    comment = getResources().getString(R.string.comment_d1_250);
-                } else if (cho >= 350 && cho < 450) {
-                    comment = getResources().getString(R.string.comment_d1_350);
-                } else if (cho >= 450) {
-                    comment = getResources().getString(R.string.comment_d1_450);
-                } else {
-                    comment = getResources().getString(R.string.BrixErrorOutOfRangeCHO);
-                    error = true;
-                }
-            } else if (spinnerValue == 1) {
-                if (cho >= 0 && cho < 150) {
-                    comment = getResources().getString(R.string.comment_cu_0);
-                } else if (cho >= 150 && cho < 250) {
-                    comment = getResources().getString(R.string.comment_cu_150);
-                } else if (cho >= 250 && cho < 350) {
-                    comment = getResources().getString(R.string.comment_cu_250);
-                } else if (cho >= 350) {
-                    comment = getResources().getString(R.string.comment_cu_350);
-                } else {
-                    comment = getResources().getString(R.string.BrixErrorOutOfRangeCHO);
-                    error = true;
-                }
-            } else if (spinnerValue == 2) {
-                if (cho >= 0 && cho < 200) {
-                    comment = getResources().getString(R.string.comment_fe_0);
-                } else if (cho >= 200 && cho < 300) {
-                    comment = getResources().getString(R.string.comment_fe_200);
-                } else if (cho >= 300 && cho < 400) {
-                    comment = getResources().getString(R.string.comment_fe_300);
-                } else if (cho >= 400) {
-                    comment = getResources().getString(R.string.comment_fe_400);
-                } else {
-                    comment = getResources().getString(R.string.BrixErrorOutOfRangeCHO);
-                    error = true;
-                }
-            } else if (spinnerValue == 3) {
-                if (cho >= 0 && cho < 300) {
-                    comment = getResources().getString(R.string.comment_pfg1_0);
-                } else if (cho >= 300 && cho < 400) {
-                    comment = getResources().getString(R.string.comment_pfg1_300);
-                } else if (cho >= 400 && cho < 500) {
-                    comment = getResources().getString(R.string.comment_pfg1_400);
-                } else if (cho >= 500) {
-                    comment = getResources().getString(R.string.comment_pfg1_500);
-                } else {
-                    comment = getResources().getString(R.string.BrixErrorOutOfRangeCHO);
-                    error = true;
-                }
-            } else if (spinnerValue == 4) {
-                if (cho >= 0 && cho < 300) {
-                    comment = getResources().getString(R.string.comment_pfg2_0);
-                } else if (cho >= 300 && cho < 400) {
-                    comment = getResources().getString(R.string.comment_pfg2_300);
-                } else if (cho >= 400 && cho < 500) {
-                    comment = getResources().getString(R.string.comment_pfg2_400);
-                } else if (cho >= 500) {
-                    comment = getResources().getString(R.string.comment_pfg2_500);
-                } else {
-                    comment = getResources().getString(R.string.BrixErrorOutOfRangeCHO);
-                    error = true;
-                }
-            } else if (spinnerValue == 5) {
-                if (cho >= 0 && cho < 150) {
-                    comment = getResources().getString(R.string.comment_d2_0);
-                } else if (cho >= 150 && cho < 250) {
-                    comment = getResources().getString(R.string.comment_d2_150);
-                } else if (cho >= 250 && cho < 350) {
-                    comment = getResources().getString(R.string.comment_d2_250);
-                } else if (cho >= 350 && cho < 450) {
-                    comment = getResources().getString(R.string.comment_d2_350);
-                } else if (cho >= 450) {
-                    comment = getResources().getString(R.string.comment_d2_450);
-                } else {
-                    comment = getResources().getString(R.string.BrixErrorOutOfRangeCHO);
-                    error = true;
-                }
+        if (spinnerValue == 0) {
+            if (cho >= 0 && cho < 150) {
+                comment = getResources().getString(R.string.comment_d1_0);
+            } else if (cho >= 150 && cho < 250) {
+                comment = getResources().getString(R.string.comment_d1_150);
+            } else if (cho >= 250 && cho < 350) {
+                comment = getResources().getString(R.string.comment_d1_250);
+            } else if (cho >= 350 && cho < 450) {
+                comment = getResources().getString(R.string.comment_d1_350);
+            } else if (cho >= 450) {
+                comment = getResources().getString(R.string.comment_d1_450);
             } else {
-                comment = getResources().getString(R.string.BrixErrorUnknownStage,
-                        ((PlantStageSpinner) findViewById(R.id.PlantStageSpinner))
-                                .getSelectedItem().toString());
+                comment = getResources().getString(R.string.BrixErrorOutOfRangeCHO);
+                error = true;
+            }
+        } else if (spinnerValue == 1) {
+            if (cho >= 0 && cho < 150) {
+                comment = getResources().getString(R.string.comment_cu_0);
+            } else if (cho >= 150 && cho < 250) {
+                comment = getResources().getString(R.string.comment_cu_150);
+            } else if (cho >= 250 && cho < 350) {
+                comment = getResources().getString(R.string.comment_cu_250);
+            } else if (cho >= 350) {
+                comment = getResources().getString(R.string.comment_cu_350);
+            } else {
+                comment = getResources().getString(R.string.BrixErrorOutOfRangeCHO);
+                error = true;
+            }
+        } else if (spinnerValue == 2) {
+            if (cho >= 0 && cho < 200) {
+                comment = getResources().getString(R.string.comment_fe_0);
+            } else if (cho >= 200 && cho < 300) {
+                comment = getResources().getString(R.string.comment_fe_200);
+            } else if (cho >= 300 && cho < 400) {
+                comment = getResources().getString(R.string.comment_fe_300);
+            } else if (cho >= 400) {
+                comment = getResources().getString(R.string.comment_fe_400);
+            } else {
+                comment = getResources().getString(R.string.BrixErrorOutOfRangeCHO);
+                error = true;
+            }
+        } else if (spinnerValue == 3) {
+            if (cho >= 0 && cho < 300) {
+                comment = getResources().getString(R.string.comment_pfg1_0);
+            } else if (cho >= 300 && cho < 400) {
+                comment = getResources().getString(R.string.comment_pfg1_300);
+            } else if (cho >= 400 && cho < 500) {
+                comment = getResources().getString(R.string.comment_pfg1_400);
+            } else if (cho >= 500) {
+                comment = getResources().getString(R.string.comment_pfg1_500);
+            } else {
+                comment = getResources().getString(R.string.BrixErrorOutOfRangeCHO);
+                error = true;
+            }
+        } else if (spinnerValue == 4) {
+            if (cho >= 0 && cho < 300) {
+                comment = getResources().getString(R.string.comment_pfg2_0);
+            } else if (cho >= 300 && cho < 400) {
+                comment = getResources().getString(R.string.comment_pfg2_300);
+            } else if (cho >= 400 && cho < 500) {
+                comment = getResources().getString(R.string.comment_pfg2_400);
+            } else if (cho >= 500) {
+                comment = getResources().getString(R.string.comment_pfg2_500);
+            } else {
+                comment = getResources().getString(R.string.BrixErrorOutOfRangeCHO);
+                error = true;
+            }
+        } else if (spinnerValue == 5) {
+            if (cho >= 0 && cho < 150) {
+                comment = getResources().getString(R.string.comment_d2_0);
+            } else if (cho >= 150 && cho < 250) {
+                comment = getResources().getString(R.string.comment_d2_150);
+            } else if (cho >= 250 && cho < 350) {
+                comment = getResources().getString(R.string.comment_d2_250);
+            } else if (cho >= 350 && cho < 450) {
+                comment = getResources().getString(R.string.comment_d2_350);
+            } else if (cho >= 450) {
+                comment = getResources().getString(R.string.comment_d2_450);
+            } else {
+                comment = getResources().getString(R.string.BrixErrorOutOfRangeCHO);
                 error = true;
             }
         } else {
-            /* TODO: Translate this into an actual string */
-            comment = getResources().getString(R.string.BrixErrorUnknownCategory, age_category);
+            comment = getResources().getString(R.string.BrixErrorUnknownStage,
+                    ((PlantStageSpinner) findViewById(R.id.PlantStageSpinner))
+                            .getSelectedItem().toString());
             error = true;
         }
 
