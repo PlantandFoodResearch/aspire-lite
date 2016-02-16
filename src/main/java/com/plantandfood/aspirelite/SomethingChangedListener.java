@@ -3,5 +3,5 @@
 package com.plantandfood.aspirelite;
 
 interface SomethingChangedListener {
-    void textChangedCallback();
+    void refresh();
 }

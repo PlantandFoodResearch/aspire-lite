@@ -16,7 +16,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -56,8 +55,8 @@ public class MainActivity extends AppCompatActivity
         /* Save the EntryGrid reference */
         grid = (EntryGrid) findViewById(R.id.BrixEntryLayout);
         /* Set the callback listeners... */
-        grid.setTextChangedListener(this);
-        grid.setScrollToListener(this);
+        grid.somethingChangedListener = this;
+        grid.scrollToListener = this;
 
         /* Initialise the logger */
         this.log = new Log(this, (LinearLayout)findViewById(R.id.MessageList));
@@ -108,11 +107,6 @@ public class MainActivity extends AppCompatActivity
         /* Launch the new activity and return */
         startActivity(intent);
         return true;
-    }
-
-    public void textChangedCallback() {
-        /* Handle a text changed callback */
-        refresh();
     }
 
     public void onReset(View view) {

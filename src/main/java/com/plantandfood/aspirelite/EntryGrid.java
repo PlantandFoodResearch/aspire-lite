@@ -19,18 +19,18 @@ import java.util.ArrayList;
 class EntryGrid extends ElementGrid {
 
     /* Logging tag */
-    String LogTag = "EntryGrid";
+    private String LogTag = "EntryGrid";
 
     /* The local EditTexts... */
-    ArrayList<EditText> values;
+    private ArrayList<EditText> values;
     /* The local text changed listener */
-    TextChangedListener textChangedListener;
+    SomethingChangedListener somethingChangedListener;
     /* The scroll to listener */
     ScrollToListener scrollToListener;
     /* The number of boxes to have, at a minimum */
-    int min_count = getResources().getInteger(R.integer.MIN_BRIX_READINGS);
+    private int min_count = getResources().getInteger(R.integer.MIN_BRIX_READINGS);
     /* The currently focused element */
-    int currentFocused;
+    private int currentFocused;
 
     /* Initialisers */
     public EntryGrid(Context context) {
@@ -205,8 +205,8 @@ class EntryGrid extends ElementGrid {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (textChangedListener != null) {
-                    textChangedListener.textChangedCallback();
+                if (somethingChangedListener != null) {
+                    somethingChangedListener.refresh();
                 }
                 persist_values();
             }
@@ -237,16 +237,6 @@ class EntryGrid extends ElementGrid {
         return entry;
     }
 
-    /* Listeners */
-    public void setTextChangedListener(TextChangedListener listener) {
-        /* Set the local listener for an entry changing */
-        this.textChangedListener = listener;
-    }
-    public void setScrollToListener(ScrollToListener listener) {
-        /* Set the local listener for an entry changing */
-        this.scrollToListener = listener;
-    }
-
     public void reset() {
         /* Reset the fields */
 
@@ -268,8 +258,8 @@ class EntryGrid extends ElementGrid {
         persist_focus(values.get(0));
 
         /* Call the text changed callback */
-        if (textChangedListener != null) {
-            textChangedListener.textChangedCallback();
+        if (somethingChangedListener != null) {
+            somethingChangedListener.refresh();
         }
     }
 

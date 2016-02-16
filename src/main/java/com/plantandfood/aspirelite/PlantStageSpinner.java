@@ -99,7 +99,7 @@ public class PlantStageSpinner extends Spinner
             persist();
             /* Call the listener, if set */
             if (listener != null) {
-                listener.textChangedCallback();
+                listener.refresh();
             }
         }
     }
