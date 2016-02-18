@@ -8,6 +8,8 @@ the plant state.
 
 See the help menu in the app for details.
 
+The app is available on the [google play store](https://play.google.com/store/apps/details?id=com.plantandfood.aspirelite).
+
 ## Contributing
 
 Feel free to send a pull request with improvements!
