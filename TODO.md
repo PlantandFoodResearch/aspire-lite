@@ -2,11 +2,6 @@
 
 Remaining TODO items for this Android app.
 
-## Pre release
-
-- Finish README.md (link to app store)
-- Ensure that the remaining documentation is online (and email to Warrick)
-
 
 ## UI
 
