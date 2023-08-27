@@ -10,7 +10,8 @@
         android:theme="@style/AppTheme">
         <!-- configChanges: we manually handle events -->
         <activity android:name=".MainActivity"
-            android:configChanges="screenSize|orientation|keyboardHidden">
+            android:configChanges="screenSize|orientation|keyboardHidden"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
