@@ -10,21 +10,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15618be2-6f5c-4e8d-a308-c9a269cd3e0c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules/aspire-lite.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/aspire-lite.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/plantandfood/aspirelite/ChildActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/plantandfood/aspirelite/ChildActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/plantandfood/aspirelite/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/plantandfood/aspirelite/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\HRTBCP\.android\avd\Pixel_4_API_29.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\HRTBCP\.android\avd\Pixel_5_API_32.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="KEY_STORE_PATH" value="C:\PFR-App\aspirenz\keys.jks" />
+    <option name="KEY_ALIAS" value="aspirelitekey" />
+    <option name="REMEMBER_PASSWORDS" value="true" />
+    <option name="BUILD_TARGET_KEY" value="apk" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -35,12 +39,16 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ApkExportedModule" value="aspire-lite" />
+    <property name="BundleExportedModule" value="aspire-lite" />
+    <property name="ExportApk.ApkPath" value="C:\Users\HRTBCP\PFR-android-apps\aspire-lite" />
+    <property name="ExportApk.BuildVariants" value="release" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="cidr.known.project.marker" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../PFR-App/aspirenz/keys.jks" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">

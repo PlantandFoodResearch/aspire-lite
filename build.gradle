@@ -26,8 +26,8 @@ android {
         applicationId "com.plantandfood.aspirelite"
         minSdkVersion 16
         targetSdkVersion 33
-        versionCode 2
-        versionName "2016.2.17"
+        versionCode 3
+        versionName "2023.09.05"
     }
     buildTypes {
         release {
