@@ -1,31 +1,27 @@
 buildscript {
     repositories {
-        jcenter()
         mavenCentral()
         google()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.2.2'
+        classpath 'com.android.tools.build:gradle:8.6.1'
     }
 }
 
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 33
-    buildToolsVersion "33.0.2"
-
+    compileSdk 34
     repositories {
         mavenCentral()
         google()
-        jcenter()
     }
 
     defaultConfig {
         applicationId "com.plantandfood.aspirelite"
-        minSdkVersion 16
-        targetSdkVersion 33
+        minSdkVersion 21
+        targetSdkVersion 34
         versionCode 4
         versionName "2023.09.05"
     }
@@ -35,11 +31,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    namespace 'com.plantandfood.aspirelite'
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    //implementation 'junit:junit:4.12'
+
     implementation 'androidx.appcompat:appcompat:1.6.1'
+    testImplementation 'junit:junit:4.13.2'
 
 }
