@@ -10,10 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15618be2-6f5c-4e8d-a308-c9a269cd3e0c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/aspire-lite.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/aspire-lite.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
@@ -32,7 +28,7 @@
     </projectState>
   </component>
   <component name="GenerateSignedApkSettings">
-    <option name="KEY_STORE_PATH" value="C:\PFR-App\aspirenz\keys.jks" />
+    <option name="KEY_STORE_PATH" value="C:\Users\hrtbcp\PFR-App\aspirenz\keys.jks" />
     <option name="KEY_ALIAS" value="aspirelitekey" />
     <option name="REMEMBER_PASSWORDS" value="true" />
     <option name="BUILD_TARGET_KEY" value="apk" />
@@ -65,7 +61,7 @@
   "keyToString": {
     "Android App.aspire-lite.executor": "Run",
     "ApkExportedModule": "aspire-lite",
-    "ExportApk.ApkPathForaspire-lite": "C:\\Users\\HRTBCP\\PFR-android-apps\\aspire-lite",
+    "ExportApk.ApkPathForaspire-lite": "C:\\Users\\hrtbcp\\PFR-App\\aspirenz",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -73,9 +69,9 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "upgrade-sdk35",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/hrtbcp/PFR-App/aspire-lite"
+    "last_opened_file_path": "C:/Users/hrtbcp/PFR-App/aspirenz/keys.jks"
   },
   "keyToStringList": {
     "ExportApk.BuildVariants": [
